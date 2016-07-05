@@ -18,7 +18,7 @@ Repository: w3c/gyroscope
 Markup Shorthands: markdown on
 Inline Github Issues: true
 !Test Suite: <a href="https://github.com/w3c/web-platform-tests/tree/master/gyroscope">web-platform-tests on GitHub</a>
-Boilerplate: omit issues-index
+Boilerplate: omit issues-index, omit conformance
 Default Biblio Status: current
 </pre>
 <pre class="anchors">
