@@ -82,7 +82,7 @@ The Gyroscope Sensor has a <a>default sensor</a>,
 which is the device's main gyroscope sensor.
 
 The Gyroscope Sensor has a single <a>supported reporting mode</a>
-which is "<a>auto</a>".
+which is "<a>periodic</a>".
 
 The Gyroscope Sensor's <a>permission</a> name is `"gyroscope"`.
 It has no <a>associated PermissionDescriptor</a>.
