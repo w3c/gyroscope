@@ -1,5 +1,5 @@
 <pre class="metadata">
-Title: Gyroscope Sensor
+Title: Gyroscope
 Status: ED
 Level: 1
 ED: https://w3c.github.io/gyroscope/
@@ -40,7 +40,7 @@ urlPrefix: https://w3c.github.io/sensors; spec: GENERIC-SENSOR
 Introduction {#intro}
 ============
 
-The Gyroscope Sensor extends the Generic Sensor API [[GENERIC-SENSOR]]
+The Gyroscope API extends the Generic Sensor API [[GENERIC-SENSOR]]
 to provide information about the angular velocity around the device's local X, Y and Z axis 
 in terms of radian per seconds units.
 
@@ -50,7 +50,7 @@ Examples {#examples}
 
 <div class="example">
     <pre highlight="js">
-    let sensor = new GyroscopeSensor();
+    let sensor = new Gyroscope();
     sensor.start();
     
     sensor.onchange = event => {
@@ -72,31 +72,31 @@ beyond those described in the Generic Sensor API [[!GENERIC-SENSOR]].
 Model {#model}
 =====
 
-The Gyroscope Sensor's associated <a>Sensor subclass</a>
-is the {{GyroscopeSensor}} class.
+The Gyroscope's associated <a>Sensor subclass</a>
+is the {{Gyroscope}} class.
 
-The Gyroscope Sensor's associated <a>SensorReading subclass</a>
-is the {{GyroscopeSensorReading}} class.
+The Gyroscope's associated <a>SensorReading subclass</a>
+is the {{GyroscopeReading}} class.
 
-The Gyroscope Sensor has a <a>default sensor</a>,
+The Gyroscope has a <a>default sensor</a>,
 which is the device's main gyroscope sensor.
 
-The Gyroscope Sensor has a single <a>supported reporting mode</a>
+The Gyroscope has a single <a>supported reporting mode</a>
 which is "<a>periodic</a>".
 
 The Gyroscope Sensor's <a>permission</a> name is `"gyroscope"`.
 It has no <a>associated PermissionDescriptor</a>.
 
-The Gyroscope Sensor has an associated abstract operation
+The Gyroscope has an associated abstract operation
 to <dfn>retrieve the sensor permission</dfn> which
 must simply return a <a>permission</a> whose name is "gyroscope".
 
-The Gyroscope Sensor has an associated abstract operation
+The Gyroscope has an associated abstract operation
 to <dfn lt="Construct SensorReading Object">construct a SensorReading object</dfn>
-which creates a new {{GyroscopeSensorReading}} object and sets each of its
-<a attribute for="GyroscopeSensorReading">rotationRateX</a>
-<a attribute for="GyroscopeSensorReading">rotationRateY</a> and
-<a attribute for="GyroscopeSensorReading">rotationRateZ</a> attributes to
+which creates a new {{GyroscopeReading}} object and sets each of its
+<a attribute for="GyroscopeReading">rotationRateX</a>
+<a attribute for="GyroscopeReading">rotationRateY</a> and
+<a attribute for="GyroscopeReading">rotationRateZ</a> attributes to
 the <a>current angular velocity</a> about the corresponding axis.
 
 The <dfn>current angular velocity</dfn> is the rate at which the device rotates
@@ -112,48 +112,48 @@ an axis is clockwise when viewed along the positive direction of the axis (see f
 API {#api}
 ===
 
-The GyroscopeSensor Interface {#gyroscope-sensor-interface}
+The Gyroscope Interface {#gyroscope-interface}
 --------------------------------
 
 <pre class="idl">
   [Constructor(optional SensorOptions sensorOptions)]
-  interface GyroscopeSensor : Sensor {
-    readonly attribute GyroscopeSensorReading? reading;
+  interface Gyroscope : Sensor {
+    readonly attribute GyroscopeReading? reading;
   };
 </pre>
 
-To <dfn>Construct an GyroscopeSensor Object</dfn> the user agent must invoke the 
+To <dfn>Construct an Gyroscope Object</dfn> the user agent must invoke the 
 <a>construct a Sensor object</a> abstract operation.
 
-The GyroscopeSensorReading Interface {#gyroscope-sensor-reading-interface}
+The GyroscopeReading Interface {#gyroscope-reading-interface}
 ---------------------------------------
 
 <pre class="idl">
-  [Constructor(GyroscopeSensorReadingInit GyroscopeSensorReadingInit)]
-  interface GyroscopeSensorReading : SensorReading {
+  [Constructor(GyroscopeReadingInit GyroscopeReadingInit)]
+  interface GyroscopeReading : SensorReading {
       readonly attribute unrestricted double rotationRateX;
       readonly attribute unrestricted double rotationRateY;
       readonly attribute unrestricted double rotationRateZ;
   };
   
-  dictionary GyroscopeSensorReadingInit {
+  dictionary GyroscopeReadingInit {
       unrestricted double rotationRateX = 0;
       unrestricted double rotationRateY = 0;
       unrestricted double rotationRateZ = 0;
   };
 </pre>
 
-### The GyroscopeSensorReading constructor ### {#gyroscope-sensor-reading-constructor}
+### The GyroscopeReading constructor ### {#gyroscope-reading-constructor}
 
-### The attribute ### {#gyroscope-sensor-reading-attribute}
+### The attribute ### {#gyroscope-reading-attribute}
 
-The <a attribute for="GyroscopeSensorReading">rotationRateX</a> attribute of the {{GyroscopeSensorReading}}
+The <a attribute for="GyroscopeReading">rotationRateX</a> attribute of the {{GyroscopeReading}}
 interface represents the <a>current angular velocity</a> around X-axis.
 
-The <a attribute for="GyroscopeSensorReading">rotationRateY</a> attribute of the {{GyroscopeSensorReading}}
+The <a attribute for="GyroscopeReading">rotationRateY</a> attribute of the {{GyroscopeReading}}
 interface represents the <a>current angular velocity</a> around Y-axis.
 
-The <a attribute for="GyroscopeSensorReading">rotationRateX</a> attribute of the {{GyroscopeSensorReading}}
+The <a attribute for="GyroscopeReading">rotationRateX</a> attribute of the {{GyroscopeReading}}
 interface represents the <a>current angular velocity</a> around Z-axis.
 
 Acknowledgements {#acknowledgements}
