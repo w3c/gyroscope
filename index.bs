@@ -54,9 +54,9 @@ Examples {#examples}
     sensor.start();
     
     sensor.onchange = event => {
-        console.log("Rotation rate around the X-axis " + event.reading.rotationRateX);
-        console.log("Rotation rate around the Y-axis " + event.reading.rotationRateY);
-        console.log("Rotation rate around the Z-axis " + event.reading.rotationRateZ);
+        console.log("Rotation rate around the X-axis " + event.reading.x);
+        console.log("Rotation rate around the Y-axis " + event.reading.y);
+        console.log("Rotation rate around the Z-axis " + event.reading.z);
     };
 
     sensor.onerror = event => console.log(event.error.name, event.error.message);
@@ -94,9 +94,9 @@ must simply return a <a>permission</a> whose name is "gyroscope".
 The Gyroscope has an associated abstract operation
 to <dfn lt="Construct SensorReading Object">construct a SensorReading object</dfn>
 which creates a new {{GyroscopeReading}} object and sets each of its
-<a attribute for="GyroscopeReading">rotationRateX</a>
-<a attribute for="GyroscopeReading">rotationRateY</a> and
-<a attribute for="GyroscopeReading">rotationRateZ</a> attributes to
+<a attribute for="GyroscopeReading">x</a>
+<a attribute for="GyroscopeReading">y</a> and
+<a attribute for="GyroscopeReading">z</a> attributes to
 the <a>current angular velocity</a> about the corresponding axis.
 
 The <dfn>current angular velocity</dfn> is the rate at which the device rotates
@@ -131,15 +131,15 @@ The GyroscopeReading Interface {#gyroscope-reading-interface}
 <pre class="idl">
   [Constructor(GyroscopeReadingInit GyroscopeReadingInit)]
   interface GyroscopeReading : SensorReading {
-      readonly attribute unrestricted double rotationRateX;
-      readonly attribute unrestricted double rotationRateY;
-      readonly attribute unrestricted double rotationRateZ;
+      readonly attribute unrestricted double x;
+      readonly attribute unrestricted double y;
+      readonly attribute unrestricted double z;
   };
   
   dictionary GyroscopeReadingInit {
-      unrestricted double rotationRateX = 0;
-      unrestricted double rotationRateY = 0;
-      unrestricted double rotationRateZ = 0;
+      unrestricted double x = 0;
+      unrestricted double y = 0;
+      unrestricted double z = 0;
   };
 </pre>
 
@@ -147,13 +147,13 @@ The GyroscopeReading Interface {#gyroscope-reading-interface}
 
 ### The attribute ### {#gyroscope-reading-attribute}
 
-The <a attribute for="GyroscopeReading">rotationRateX</a> attribute of the {{GyroscopeReading}}
+The <a attribute for="GyroscopeReading">x</a> attribute of the {{GyroscopeReading}}
 interface represents the <a>current angular velocity</a> around X-axis.
 
-The <a attribute for="GyroscopeReading">rotationRateY</a> attribute of the {{GyroscopeReading}}
+The <a attribute for="GyroscopeReading">y</a> attribute of the {{GyroscopeReading}}
 interface represents the <a>current angular velocity</a> around Y-axis.
 
-The <a attribute for="GyroscopeReading">rotationRateX</a> attribute of the {{GyroscopeReading}}
+The <a attribute for="GyroscopeReading">x</a> attribute of the {{GyroscopeReading}}
 interface represents the <a>current angular velocity</a> around Z-axis.
 
 Acknowledgements {#acknowledgements}
