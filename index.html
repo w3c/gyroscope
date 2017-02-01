@@ -415,6 +415,19 @@
 	 border-left: 0.5em solid #DEF;
 	}
 
+	/* Put nice boxes around each algorithm. */
+	[data-algorithm]:not(.heading) {
+	  padding: .5em;
+	  border: thin solid #ddd; border-radius: .5em;
+	  margin: .5em 0;
+	}
+	[data-algorithm]:not(.heading) > :first-child {
+	  margin-top: 0;
+	}
+	[data-algorithm]:not(.heading) > :last-child {
+	  margin-bottom: 0;
+	}
+
 	/* Style for switch/case <dl>s */
 	dl.switch > dd > ol.only,
 	dl.switch > dd > .only > ol {
@@ -956,6 +969,8 @@ Possible extra rowspan handling
 		/* Reverse color scheme */
 		color: black;
 		border-color: #3980B5;
+		border-bottom-width: 3px !important;
+		margin-bottom: 0px !important;
 	}
 	.toc a:visited {
 		border-color: #054572;
@@ -1168,7 +1183,7 @@ Possible extra rowspan handling
       background-attachment: fixed;
     }
   </style>
-  <meta content="Bikeshed 1.0.0" name="generator">
+  <meta content="Bikeshed version 009836c46217067220542eccc715a300175723d6" name="generator">
 <style>/* style-md-lists */
 
             /* This is a weird hack for me not yet following the commonmark spec
@@ -1415,7 +1430,7 @@ pre.idl.highlight { color: #708090; }
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Gyroscope</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2016-10-28">28 October 2016</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2017-01-31">31 January 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1438,7 +1453,7 @@ pre.idl.highlight { color: #708090; }
     </dl>
    </div>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2016 <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">permissive document license</a> rules apply. </p>
+   <p class="copyright" data-fill-with="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2017 <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">permissive document license</a> rules apply. </p>
    <hr title="Separator for header">
   </div>
   <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
@@ -1479,12 +1494,12 @@ the rate of rotation around the device’s local three primary axes.</p>
     <li>
      <a href="#api"><span class="secno">5</span> <span class="content">API</span></a>
      <ol class="toc">
-      <li><a href="#gyroscope-interface"><span class="secno">5.1</span> <span class="content">The Gyroscope Interface</span></a>
       <li>
-       <a href="#gyroscope-reading-interface"><span class="secno">5.2</span> <span class="content">The GyroscopeReading Interface</span></a>
+       <a href="#gyroscope-interface"><span class="secno">5.1</span> <span class="content">The Gyroscope Interface</span></a>
        <ol class="toc">
-        <li><a href="#gyroscope-reading-constructor"><span class="secno">5.2.1</span> <span class="content">The GyroscopeReading constructor</span></a>
-        <li><a href="#gyroscope-reading-attribute"><span class="secno">5.2.2</span> <span class="content">The attribute</span></a>
+        <li><a href="#gyroscope-x"><span class="secno">5.1.1</span> <span class="content">Gyroscope.x</span></a>
+        <li><a href="#gyroscope-y"><span class="secno">5.1.2</span> <span class="content">Gyroscope.y</span></a>
+        <li><a href="#gyroscope-z"><span class="secno">5.1.3</span> <span class="content">Gyroscope.z</span></a>
        </ol>
      </ol>
     <li><a href="#acknowledgements"><span class="secno">6</span> <span class="content">Acknowledgements</span></a>
@@ -1509,37 +1524,28 @@ the rate of rotation around the device’s local three primary axes.</p>
    <p>The Gyroscope API extends the Generic Sensor API <a data-link-type="biblio" href="#biblio-generic-sensor">[GENERIC-SENSOR]</a> to provide information about the angular velocity around the device’s local X, Y and Z axis 
 in terms of radian per seconds units.</p>
    <h2 class="heading settled" data-level="2" id="examples"><span class="secno">2. </span><span class="content">Examples</span><a class="self-link" href="#examples"></a></h2>
-   <div class="example" id="example-fd3a7936">
-    <a class="self-link" href="#example-fd3a7936"></a> 
-<pre class="highlight"><span></span><span class="kd">let</span> <span class="nx">sensor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Gyroscope</span><span class="p">();</span>
-<span class="nx">sensor</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+   <div class="example" id="example-6fb79afd">
+    <a class="self-link" href="#example-6fb79afd"></a> 
+<pre class="highlight"><span class="kd">let</span> sensor <span class="o">=</span> <span class="k">new</span> Gyroscope<span class="p">(</span><span class="p">)</span><span class="p">;</span>
+sensor<span class="p">.</span>start<span class="p">(</span><span class="p">)</span><span class="p">;</span>
     
-<span class="nx">sensor</span><span class="p">.</span><span class="nx">onchange</span> <span class="o">=</span> <span class="nx">event</span> <span class="o">=></span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Rotation rate around the X-axis "</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">reading</span><span class="p">.</span><span class="nx">x</span><span class="p">);</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Rotation rate around the Y-axis "</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">reading</span><span class="p">.</span><span class="nx">y</span><span class="p">);</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Rotation rate around the Z-axis "</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">reading</span><span class="p">.</span><span class="nx">z</span><span class="p">);</span>
-<span class="p">};</span>
+sensor<span class="p">.</span>onchange <span class="o">=</span> <span class="p">(</span><span class="p">)</span> <span class="p">=></span> <span class="p">{</span>
+    console<span class="p">.</span>log<span class="p">(</span><span class="s2">"Angular velocity around the X-axis "</span> <span class="o">+</span> sensor<span class="p">.</span>x<span class="p">)</span><span class="p">;</span>
+    console<span class="p">.</span>log<span class="p">(</span><span class="s2">"Angular velocity around the Y-axis "</span> <span class="o">+</span> sensor<span class="p">.</span>y<span class="p">)</span><span class="p">;</span>
+    console<span class="p">.</span>log<span class="p">(</span><span class="s2">"Angular velocity around the Z-axis "</span> <span class="o">+</span> sensor<span class="p">.</span>z<span class="p">)</span><span class="p">;</span>
+<span class="p">}</span><span class="p">;</span>
 
-<span class="nx">sensor</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="nx">event</span> <span class="o">=></span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">error</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+sensor<span class="p">.</span>onerror <span class="o">=</span> event <span class="p">=></span> console<span class="p">.</span>log<span class="p">(</span>event<span class="p">.</span>error<span class="p">.</span>name<span class="p">,</span> event<span class="p">.</span>error<span class="p">.</span>message<span class="p">)</span><span class="p">;</span>
 </pre>
    </div>
    <h2 class="heading settled" data-level="3" id="security-and-privacy"><span class="secno">3. </span><span class="content">Security and Privacy Considerations</span><a class="self-link" href="#security-and-privacy"></a></h2>
    <p>There are no specific security and privacy considerations
 beyond those described in the Generic Sensor API <a data-link-type="biblio" href="#biblio-generic-sensor">[GENERIC-SENSOR]</a>.</p>
    <h2 class="heading settled" data-level="4" id="model"><span class="secno">4. </span><span class="content">Model</span><a class="self-link" href="#model"></a></h2>
-   <p>The Gyroscope’s associated <a data-link-type="dfn" href="https://w3c.github.io/sensors#sensor-subclass">Sensor subclass</a> is the <code class="idl"><a data-link-type="idl" href="#gyroscope" id="ref-for-gyroscope-1">Gyroscope</a></code> class.</p>
-   <p>The Gyroscope’s associated <a data-link-type="dfn" href="https://w3c.github.io/sensors#sensorreading-subclass">SensorReading subclass</a> is the <code class="idl"><a data-link-type="idl" href="#gyroscopereading" id="ref-for-gyroscopereading-1">GyroscopeReading</a></code> class.</p>
-   <p>The Gyroscope has a <a data-link-type="dfn" href="https://w3c.github.io/sensors#default-sensor">default sensor</a>,
-which is the device’s main gyroscope sensor.</p>
-   <p>The Gyroscope has a single <a data-link-type="dfn" href="https://w3c.github.io/sensors#supported-reporting-modes">supported reporting mode</a> which is "<a data-link-type="dfn">periodic</a>".</p>
-   <p>The Gyroscope Sensor’s <a data-link-type="dfn" href="https://w3c.github.io/permissions/#idl-def-Permission">permission</a> name is <code>"gyroscope"</code>.
-It has no <a data-link-type="dfn" href="https://w3c.github.io/permissions/#dfn-associated-permissiondescriptor">associated PermissionDescriptor</a>.</p>
-   <p>The Gyroscope has an associated abstract operation
-to <dfn data-dfn-type="dfn" data-noexport="" id="retrieve-the-sensor-permission">retrieve the sensor permission<a class="self-link" href="#retrieve-the-sensor-permission"></a></dfn> which
-must simply return a <a data-link-type="dfn" href="https://w3c.github.io/permissions/#idl-def-Permission">permission</a> whose name is "gyroscope".</p>
-   <p>The Gyroscope has an associated abstract operation
-to <dfn data-dfn-type="dfn" data-lt="Construct SensorReading Object" data-noexport="" id="construct-sensorreading-object">construct a SensorReading object<a class="self-link" href="#construct-sensorreading-object"></a></dfn> which creates a new <code class="idl"><a data-link-type="idl" href="#gyroscopereading" id="ref-for-gyroscopereading-2">GyroscopeReading</a></code> object and sets each of its <a class="idl-code" data-link-type="attribute" href="#dom-gyroscopereading-x" id="ref-for-dom-gyroscopereading-x-1">x</a> <a class="idl-code" data-link-type="attribute" href="#dom-gyroscopereading-y" id="ref-for-dom-gyroscopereading-y-1">y</a> and <a class="idl-code" data-link-type="attribute" href="#dom-gyroscopereading-z" id="ref-for-dom-gyroscopereading-z-1">z</a> attributes to
-the <a data-link-type="dfn" href="#current-angular-velocity" id="ref-for-current-angular-velocity-1">current angular velocity</a> about the corresponding axis.</p>
+   <p>The gyroscope’s associated <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#sensor">Sensor</a></code> subclass is the <code class="idl"><a data-link-type="idl" href="#gyroscope" id="ref-for-gyroscope-1">Gyroscope</a></code> class.</p>
+   <p>Gyroscope has a <a data-link-type="dfn" href="https://w3c.github.io/sensors#default-sensor">default sensor</a>, which is the device’s main gyroscope sensor.</p>
+   <p>A <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading">latest reading</a> per <a data-link-type="dfn" href="https://w3c.github.io/sensors#sensor">sensor</a> of gyroscope type includes three <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry">entries</a> whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-key">keys</a> are "x", "y", "z" and whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-value">values</a> contain <a data-link-type="dfn" href="#current-angular-velocity" id="ref-for-current-angular-velocity-1">current angular
+velocity</a> about the corresponding axes.</p>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="current-angular-velocity">current angular velocity</dfn> is the rate at which the device rotates
 about a specified axis. Its unit is the radian per second (rad/s) <a data-link-type="biblio" href="#biblio-si">[SI]</a>.</p>
    <p>The sign of the <a data-link-type="dfn" href="#current-angular-velocity" id="ref-for-current-angular-velocity-2">current angular velocity</a> depends on the rotation direction and
@@ -1550,29 +1556,21 @@ an axis is clockwise when viewed along the positive direction of the axis (see f
    <h3 class="heading settled" data-level="5.1" id="gyroscope-interface"><span class="secno">5.1. </span><span class="content">The Gyroscope Interface</span><a class="self-link" href="#gyroscope-interface"></a></h3>
 <pre class="idl highlight def">[<dfn class="nv idl-code" data-dfn-for="Gyroscope" data-dfn-type="constructor" data-export="" data-lt="Gyroscope(sensorOptions)|Gyroscope()" id="dom-gyroscope-gyroscope">Constructor<a class="self-link" href="#dom-gyroscope-gyroscope"></a></dfn>(<span class="kt">optional</span> <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#dictdef-sensoroptions">SensorOptions</a> <dfn class="nv idl-code" data-dfn-for="Gyroscope/Gyroscope(sensorOptions)" data-dfn-type="argument" data-export="" id="dom-gyroscope-gyroscope-sensoroptions-sensoroptions">sensorOptions<a class="self-link" href="#dom-gyroscope-gyroscope-sensoroptions-sensoroptions"></a></dfn>)]
 <span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="gyroscope">Gyroscope</dfn> : <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#sensor">Sensor</a> {
-  <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#gyroscopereading" id="ref-for-gyroscopereading-3">GyroscopeReading</a>? <dfn class="nv idl-code" data-dfn-for="Gyroscope" data-dfn-type="attribute" data-export="" data-readonly="" data-type="GyroscopeReading?" id="dom-gyroscope-reading">reading<a class="self-link" href="#dom-gyroscope-reading"></a></dfn>;
+  <span class="kt">readonly</span> <span class="kt">attribute</span> <span class="kt">unrestricted</span> <span class="kt">double</span>? <dfn class="nv dfn-paneled idl-code" data-dfn-for="Gyroscope" data-dfn-type="attribute" data-export="" data-readonly="" data-type="unrestricted double?" id="dom-gyroscope-x">x</dfn>;
+  <span class="kt">readonly</span> <span class="kt">attribute</span> <span class="kt">unrestricted</span> <span class="kt">double</span>? <dfn class="nv dfn-paneled idl-code" data-dfn-for="Gyroscope" data-dfn-type="attribute" data-export="" data-readonly="" data-type="unrestricted double?" id="dom-gyroscope-y">y</dfn>;
+  <span class="kt">readonly</span> <span class="kt">attribute</span> <span class="kt">unrestricted</span> <span class="kt">double</span>? <dfn class="nv dfn-paneled idl-code" data-dfn-for="Gyroscope" data-dfn-type="attribute" data-export="" data-readonly="" data-type="unrestricted double?" id="dom-gyroscope-z">z</dfn>;
 };
 </pre>
-   <p>To <dfn data-dfn-type="dfn" data-noexport="" id="construct-an-gyroscope-object">Construct an Gyroscope Object<a class="self-link" href="#construct-an-gyroscope-object"></a></dfn> the user agent must invoke the <a data-link-type="dfn" href="https://w3c.github.io/sensors#construct-sensor-object">construct a Sensor object</a> abstract operation.</p>
-   <h3 class="heading settled" data-level="5.2" id="gyroscope-reading-interface"><span class="secno">5.2. </span><span class="content">The GyroscopeReading Interface</span><a class="self-link" href="#gyroscope-reading-interface"></a></h3>
-<pre class="idl highlight def">[<dfn class="nv idl-code" data-dfn-for="GyroscopeReading" data-dfn-type="constructor" data-export="" data-lt="GyroscopeReading(GyroscopeReadingInit)" id="dom-gyroscopereading-gyroscopereading">Constructor<a class="self-link" href="#dom-gyroscopereading-gyroscopereading"></a></dfn>(<a class="n" data-link-type="idl-name" href="#dictdef-gyroscopereadinginit" id="ref-for-dictdef-gyroscopereadinginit-1">GyroscopeReadingInit</a> <dfn class="nv idl-code" data-dfn-for="GyroscopeReading/GyroscopeReading(GyroscopeReadingInit)" data-dfn-type="argument" data-export="" id="dom-gyroscopereading-gyroscopereading-gyroscopereadinginit-gyroscopereadinginit">GyroscopeReadingInit<a class="self-link" href="#dom-gyroscopereading-gyroscopereading-gyroscopereadinginit-gyroscopereadinginit"></a></dfn>)]
-<span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="gyroscopereading">GyroscopeReading</dfn> : <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#sensorreading">SensorReading</a> {
-    <span class="kt">readonly</span> <span class="kt">attribute</span> <span class="kt">unrestricted</span> <span class="kt">double</span> <dfn class="nv dfn-paneled idl-code" data-dfn-for="GyroscopeReading" data-dfn-type="attribute" data-export="" data-readonly="" data-type="unrestricted double" id="dom-gyroscopereading-x">x</dfn>;
-    <span class="kt">readonly</span> <span class="kt">attribute</span> <span class="kt">unrestricted</span> <span class="kt">double</span> <dfn class="nv dfn-paneled idl-code" data-dfn-for="GyroscopeReading" data-dfn-type="attribute" data-export="" data-readonly="" data-type="unrestricted double" id="dom-gyroscopereading-y">y</dfn>;
-    <span class="kt">readonly</span> <span class="kt">attribute</span> <span class="kt">unrestricted</span> <span class="kt">double</span> <dfn class="nv dfn-paneled idl-code" data-dfn-for="GyroscopeReading" data-dfn-type="attribute" data-export="" data-readonly="" data-type="unrestricted double" id="dom-gyroscopereading-z">z</dfn>;
-};
-  
-<span class="kt">dictionary</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="dictionary" data-export="" id="dictdef-gyroscopereadinginit">GyroscopeReadingInit</dfn> {
-    <span class="kt">unrestricted</span> <span class="kt">double</span> <dfn class="nv idl-code" data-default="0" data-dfn-for="GyroscopeReadingInit" data-dfn-type="dict-member" data-export="" data-type="unrestricted double " id="dom-gyroscopereadinginit-x">x<a class="self-link" href="#dom-gyroscopereadinginit-x"></a></dfn> = 0;
-    <span class="kt">unrestricted</span> <span class="kt">double</span> <dfn class="nv idl-code" data-default="0" data-dfn-for="GyroscopeReadingInit" data-dfn-type="dict-member" data-export="" data-type="unrestricted double " id="dom-gyroscopereadinginit-y">y<a class="self-link" href="#dom-gyroscopereadinginit-y"></a></dfn> = 0;
-    <span class="kt">unrestricted</span> <span class="kt">double</span> <dfn class="nv idl-code" data-default="0" data-dfn-for="GyroscopeReadingInit" data-dfn-type="dict-member" data-export="" data-type="unrestricted double " id="dom-gyroscopereadinginit-z">z<a class="self-link" href="#dom-gyroscopereadinginit-z"></a></dfn> = 0;
-};
-</pre>
-   <h4 class="heading settled" data-level="5.2.1" id="gyroscope-reading-constructor"><span class="secno">5.2.1. </span><span class="content">The GyroscopeReading constructor</span><a class="self-link" href="#gyroscope-reading-constructor"></a></h4>
-   <h4 class="heading settled" data-level="5.2.2" id="gyroscope-reading-attribute"><span class="secno">5.2.2. </span><span class="content">The attribute</span><a class="self-link" href="#gyroscope-reading-attribute"></a></h4>
-   <p>The <a class="idl-code" data-link-type="attribute" href="#dom-gyroscopereading-x" id="ref-for-dom-gyroscopereading-x-2">x</a> attribute of the <code class="idl"><a data-link-type="idl" href="#gyroscopereading" id="ref-for-gyroscopereading-4">GyroscopeReading</a></code> interface represents the <a data-link-type="dfn" href="#current-angular-velocity" id="ref-for-current-angular-velocity-3">current angular velocity</a> around X-axis.</p>
-   <p>The <a class="idl-code" data-link-type="attribute" href="#dom-gyroscopereading-y" id="ref-for-dom-gyroscopereading-y-2">y</a> attribute of the <code class="idl"><a data-link-type="idl" href="#gyroscopereading" id="ref-for-gyroscopereading-5">GyroscopeReading</a></code> interface represents the <a data-link-type="dfn" href="#current-angular-velocity" id="ref-for-current-angular-velocity-4">current angular velocity</a> around Y-axis.</p>
-   <p>The <a class="idl-code" data-link-type="attribute" href="#dom-gyroscopereading-x" id="ref-for-dom-gyroscopereading-x-3">x</a> attribute of the <code class="idl"><a data-link-type="idl" href="#gyroscopereading" id="ref-for-gyroscopereading-6">GyroscopeReading</a></code> interface represents the <a data-link-type="dfn" href="#current-angular-velocity" id="ref-for-current-angular-velocity-5">current angular velocity</a> around Z-axis.</p>
+   <p>To <dfn data-dfn-type="dfn" data-noexport="" id="construct-a-gyroscope-object">Construct a Gyroscope Object<a class="self-link" href="#construct-a-gyroscope-object"></a></dfn> the user agent must invoke the <a data-link-type="dfn" href="https://w3c.github.io/sensors#construct-sensor-object">construct a Sensor object</a> abstract operation.</p>
+   <h4 class="heading settled" data-level="5.1.1" id="gyroscope-x"><span class="secno">5.1.1. </span><span class="content">Gyroscope.x</span><a class="self-link" href="#gyroscope-x"></a></h4>
+   <p>The <code class="idl"><a class="idl-code" data-link-type="attribute" href="#dom-gyroscope-x" id="ref-for-dom-gyroscope-x-1">x</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#gyroscope" id="ref-for-gyroscope-2">Gyroscope</a></code> interface represents the <a data-link-type="dfn" href="#current-angular-velocity" id="ref-for-current-angular-velocity-3">current angular velocity</a> around X-axis.
+In other words, this attribute returns <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading">latest reading</a>["x"].</p>
+   <h4 class="heading settled" data-level="5.1.2" id="gyroscope-y"><span class="secno">5.1.2. </span><span class="content">Gyroscope.y</span><a class="self-link" href="#gyroscope-y"></a></h4>
+   <p>The <code class="idl"><a class="idl-code" data-link-type="attribute" href="#dom-gyroscope-y" id="ref-for-dom-gyroscope-y-1">y</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#gyroscope" id="ref-for-gyroscope-3">Gyroscope</a></code> interface represents the <a data-link-type="dfn" href="#current-angular-velocity" id="ref-for-current-angular-velocity-4">current angular velocity</a> around Y-axis.
+In other words, this attribute returns <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading">latest reading</a>["y"].</p>
+   <h4 class="heading settled" data-level="5.1.3" id="gyroscope-z"><span class="secno">5.1.3. </span><span class="content">Gyroscope.z</span><a class="self-link" href="#gyroscope-z"></a></h4>
+   <p>The <code class="idl"><a class="idl-code" data-link-type="attribute" href="#dom-gyroscope-z" id="ref-for-dom-gyroscope-z-1">z</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#gyroscope" id="ref-for-gyroscope-4">Gyroscope</a></code> interface represents the <a data-link-type="dfn" href="#current-angular-velocity" id="ref-for-current-angular-velocity-5">current angular velocity</a> around Z-axis.
+In other words, this attribute returns <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading">latest reading</a>["z"].</p>
    <h2 class="heading settled" data-level="6" id="acknowledgements"><span class="secno">6. </span><span class="content">Acknowledgements</span><a class="self-link" href="#acknowledgements"></a></h2>
    <p>Tobie Langel for the work on Generic Sensor API.</p>
    <h2 class="heading settled" data-level="7" id="conformance"><span class="secno">7. </span><span class="content">Conformance</span><a class="self-link" href="#conformance"></a></h2>
@@ -1595,35 +1593,14 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
   <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
   <ul class="index">
    <li><a href="#conformant-user-agent">conformant user agent</a><span>, in §7</span>
-   <li><a href="#construct-an-gyroscope-object">Construct an Gyroscope Object</a><span>, in §5.1</span>
-   <li><a href="#construct-sensorreading-object">Construct SensorReading Object</a><span>, in §4</span>
+   <li><a href="#construct-a-gyroscope-object">Construct a Gyroscope Object</a><span>, in §5.1</span>
    <li><a href="#current-angular-velocity">current angular velocity</a><span>, in §4</span>
    <li><a href="#dom-gyroscope-gyroscope">Gyroscope()</a><span>, in §5.1</span>
    <li><a href="#gyroscope">Gyroscope</a><span>, in §5.1</span>
-   <li><a href="#gyroscopereading">GyroscopeReading</a><span>, in §5.2</span>
-   <li><a href="#dom-gyroscopereading-gyroscopereading">GyroscopeReading(GyroscopeReadingInit)</a><span>, in §5.2</span>
-   <li><a href="#dictdef-gyroscopereadinginit">GyroscopeReadingInit</a><span>, in §5.2</span>
    <li><a href="#dom-gyroscope-gyroscope">Gyroscope(sensorOptions)</a><span>, in §5.1</span>
-   <li><a href="#dom-gyroscope-reading">reading</a><span>, in §5.1</span>
-   <li><a href="#retrieve-the-sensor-permission">retrieve the sensor permission</a><span>, in §4</span>
-   <li>
-    x
-    <ul>
-     <li><a href="#dom-gyroscopereading-x">attribute for GyroscopeReading</a><span>, in §5.2</span>
-     <li><a href="#dom-gyroscopereadinginit-x">dict-member for GyroscopeReadingInit</a><span>, in §5.2</span>
-    </ul>
-   <li>
-    y
-    <ul>
-     <li><a href="#dom-gyroscopereading-y">attribute for GyroscopeReading</a><span>, in §5.2</span>
-     <li><a href="#dom-gyroscopereadinginit-y">dict-member for GyroscopeReadingInit</a><span>, in §5.2</span>
-    </ul>
-   <li>
-    z
-    <ul>
-     <li><a href="#dom-gyroscopereading-z">attribute for GyroscopeReading</a><span>, in §5.2</span>
-     <li><a href="#dom-gyroscopereadinginit-z">dict-member for GyroscopeReadingInit</a><span>, in §5.2</span>
-    </ul>
+   <li><a href="#dom-gyroscope-x">x</a><span>, in §5.1</span>
+   <li><a href="#dom-gyroscope-y">y</a><span>, in §5.1</span>
+   <li><a href="#dom-gyroscope-z">z</a><span>, in §5.1</span>
   </ul>
   <h3 class="no-num no-ref heading settled" id="index-defined-elsewhere"><span class="content">Terms defined by reference</span><a class="self-link" href="#index-defined-elsewhere"></a></h3>
   <ul class="index">
@@ -1632,35 +1609,34 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
     <ul>
      <li><a href="https://w3c.github.io/sensors#construct-sensor-object">construct a sensor object</a>
      <li><a href="https://w3c.github.io/sensors#default-sensor">default sensor</a>
-     <li><a href="https://w3c.github.io/sensors#sensor-subclass">sensor subclass</a>
-     <li><a href="https://w3c.github.io/sensors#sensorreading-subclass">sensorreading subclass</a>
-     <li><a href="https://w3c.github.io/sensors#supported-reporting-modes">supported reporting mode</a>
-    </ul>
-   <li>
-    <a data-link-type="biblio">[permissions]</a> defines the following terms:
-    <ul>
-     <li><a href="https://w3c.github.io/permissions/#dfn-associated-permissiondescriptor">associated permissiondescriptor</a>
-     <li><a href="https://w3c.github.io/permissions/#idl-def-Permission">permission</a>
+     <li><a href="https://w3c.github.io/sensors#latest-reading">latest reading</a>
+     <li><a href="https://w3c.github.io/sensors#sensor">sensor</a>
     </ul>
    <li>
     <a data-link-type="biblio">[GENERIC-SENSOR]</a> defines the following terms:
     <ul>
      <li><a href="https://w3c.github.io/sensors/#sensor">Sensor</a>
      <li><a href="https://w3c.github.io/sensors/#dictdef-sensoroptions">SensorOptions</a>
-     <li><a href="https://w3c.github.io/sensors/#sensorreading">SensorReading</a>
+    </ul>
+   <li>
+    <a data-link-type="biblio">[INFRA]</a> defines the following terms:
+    <ul>
+     <li><a href="https://infra.spec.whatwg.org/#map-entry">entry</a>
+     <li><a href="https://infra.spec.whatwg.org/#map-key">key</a>
+     <li><a href="https://infra.spec.whatwg.org/#map-value">value</a>
     </ul>
   </ul>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
   <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
    <dt id="biblio-generic-sensor">[GENERIC-SENSOR]
-   <dd>Tobie Langel; Rick Waldron. <a href="https://w3c.github.io/sensors/">Generic Sensor API</a>. 24 March 2016. WD. URL: <a href="https://w3c.github.io/sensors/">https://w3c.github.io/sensors/</a>
-   <dt id="biblio-permissions">[PERMISSIONS]
-   <dd>Mounir Lamouri; Marcos Caceres. <a href="https://w3c.github.io/permissions/">The Permissions API</a>. 7 April 2015. WD. URL: <a href="https://w3c.github.io/permissions/">https://w3c.github.io/permissions/</a>
+   <dd>Tobie Langel; Rick Waldron. <a href="https://w3c.github.io/sensors/">Generic Sensor API</a>. URL: <a href="https://w3c.github.io/sensors/">https://w3c.github.io/sensors/</a>
+   <dt id="biblio-infra">[INFRA]
+   <dd>Anne van Kesteren; Domenic Denicola. <a href="https://infra.spec.whatwg.org/">Infra Standard</a>. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
    <dt id="biblio-webidl">[WEBIDL]
-   <dd>Cameron McCormack; Boris Zbarsky. <a href="https://heycam.github.io/webidl/">WebIDL Level 1</a>. 8 March 2016. CR. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
+   <dd>Cameron McCormack; Boris Zbarsky; Tobie Langel. <a href="https://heycam.github.io/webidl/">Web IDL</a>. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
   </dl>
   <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
@@ -1670,20 +1646,9 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
   <h2 class="no-num no-ref heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
 <pre class="idl def">[<a class="nv" href="#dom-gyroscope-gyroscope">Constructor</a>(<span class="kt">optional</span> <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#dictdef-sensoroptions">SensorOptions</a> <a class="nv" href="#dom-gyroscope-gyroscope-sensoroptions-sensoroptions">sensorOptions</a>)]
 <span class="kt">interface</span> <a class="nv" href="#gyroscope">Gyroscope</a> : <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#sensor">Sensor</a> {
-  <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#gyroscopereading">GyroscopeReading</a>? <a class="nv" data-readonly="" data-type="GyroscopeReading?" href="#dom-gyroscope-reading">reading</a>;
-};
-
-[<a class="nv" href="#dom-gyroscopereading-gyroscopereading">Constructor</a>(<a class="n" data-link-type="idl-name" href="#dictdef-gyroscopereadinginit">GyroscopeReadingInit</a> <a class="nv" href="#dom-gyroscopereading-gyroscopereading-gyroscopereadinginit-gyroscopereadinginit">GyroscopeReadingInit</a>)]
-<span class="kt">interface</span> <a class="nv" href="#gyroscopereading">GyroscopeReading</a> : <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#sensorreading">SensorReading</a> {
-    <span class="kt">readonly</span> <span class="kt">attribute</span> <span class="kt">unrestricted</span> <span class="kt">double</span> <a class="nv" data-readonly="" data-type="unrestricted double" href="#dom-gyroscopereading-x">x</a>;
-    <span class="kt">readonly</span> <span class="kt">attribute</span> <span class="kt">unrestricted</span> <span class="kt">double</span> <a class="nv" data-readonly="" data-type="unrestricted double" href="#dom-gyroscopereading-y">y</a>;
-    <span class="kt">readonly</span> <span class="kt">attribute</span> <span class="kt">unrestricted</span> <span class="kt">double</span> <a class="nv" data-readonly="" data-type="unrestricted double" href="#dom-gyroscopereading-z">z</a>;
-};
-  
-<span class="kt">dictionary</span> <a class="nv" href="#dictdef-gyroscopereadinginit">GyroscopeReadingInit</a> {
-    <span class="kt">unrestricted</span> <span class="kt">double</span> <a class="nv" data-default="0" data-type="unrestricted double " href="#dom-gyroscopereadinginit-x">x</a> = 0;
-    <span class="kt">unrestricted</span> <span class="kt">double</span> <a class="nv" data-default="0" data-type="unrestricted double " href="#dom-gyroscopereadinginit-y">y</a> = 0;
-    <span class="kt">unrestricted</span> <span class="kt">double</span> <a class="nv" data-default="0" data-type="unrestricted double " href="#dom-gyroscopereadinginit-z">z</a> = 0;
+  <span class="kt">readonly</span> <span class="kt">attribute</span> <span class="kt">unrestricted</span> <span class="kt">double</span>? <a class="nv" data-readonly="" data-type="unrestricted double?" href="#dom-gyroscope-x">x</a>;
+  <span class="kt">readonly</span> <span class="kt">attribute</span> <span class="kt">unrestricted</span> <span class="kt">double</span>? <a class="nv" data-readonly="" data-type="unrestricted double?" href="#dom-gyroscope-y">y</a>;
+  <span class="kt">readonly</span> <span class="kt">attribute</span> <span class="kt">unrestricted</span> <span class="kt">double</span>? <a class="nv" data-readonly="" data-type="unrestricted double?" href="#dom-gyroscope-z">z</a>;
 };
 
 </pre>
@@ -1691,47 +1656,36 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
    <b><a href="#current-angular-velocity">#current-angular-velocity</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-current-angular-velocity-1">4. Model</a> <a href="#ref-for-current-angular-velocity-2">(2)</a>
-    <li><a href="#ref-for-current-angular-velocity-3">5.2.2. The attribute</a> <a href="#ref-for-current-angular-velocity-4">(2)</a> <a href="#ref-for-current-angular-velocity-5">(3)</a>
+    <li><a href="#ref-for-current-angular-velocity-3">5.1.1. Gyroscope.x</a>
+    <li><a href="#ref-for-current-angular-velocity-4">5.1.2. Gyroscope.y</a>
+    <li><a href="#ref-for-current-angular-velocity-5">5.1.3. Gyroscope.z</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="gyroscope">
    <b><a href="#gyroscope">#gyroscope</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-gyroscope-1">4. Model</a>
+    <li><a href="#ref-for-gyroscope-2">5.1.1. Gyroscope.x</a>
+    <li><a href="#ref-for-gyroscope-3">5.1.2. Gyroscope.y</a>
+    <li><a href="#ref-for-gyroscope-4">5.1.3. Gyroscope.z</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="gyroscopereading">
-   <b><a href="#gyroscopereading">#gyroscopereading</a></b><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="dom-gyroscope-x">
+   <b><a href="#dom-gyroscope-x">#dom-gyroscope-x</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-gyroscopereading-1">4. Model</a> <a href="#ref-for-gyroscopereading-2">(2)</a>
-    <li><a href="#ref-for-gyroscopereading-3">5.1. The Gyroscope Interface</a>
-    <li><a href="#ref-for-gyroscopereading-4">5.2.2. The attribute</a> <a href="#ref-for-gyroscopereading-5">(2)</a> <a href="#ref-for-gyroscopereading-6">(3)</a>
+    <li><a href="#ref-for-dom-gyroscope-x-1">5.1.1. Gyroscope.x</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="dom-gyroscopereading-x">
-   <b><a href="#dom-gyroscopereading-x">#dom-gyroscopereading-x</a></b><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="dom-gyroscope-y">
+   <b><a href="#dom-gyroscope-y">#dom-gyroscope-y</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-gyroscopereading-x-1">4. Model</a>
-    <li><a href="#ref-for-dom-gyroscopereading-x-2">5.2.2. The attribute</a> <a href="#ref-for-dom-gyroscopereading-x-3">(2)</a>
+    <li><a href="#ref-for-dom-gyroscope-y-1">5.1.2. Gyroscope.y</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="dom-gyroscopereading-y">
-   <b><a href="#dom-gyroscopereading-y">#dom-gyroscopereading-y</a></b><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="dom-gyroscope-z">
+   <b><a href="#dom-gyroscope-z">#dom-gyroscope-z</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-gyroscopereading-y-1">4. Model</a>
-    <li><a href="#ref-for-dom-gyroscopereading-y-2">5.2.2. The attribute</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-gyroscopereading-z">
-   <b><a href="#dom-gyroscopereading-z">#dom-gyroscopereading-z</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-gyroscopereading-z-1">4. Model</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dictdef-gyroscopereadinginit">
-   <b><a href="#dictdef-gyroscopereadinginit">#dictdef-gyroscopereadinginit</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dictdef-gyroscopereadinginit-1">5.2. The GyroscopeReading Interface</a>
+    <li><a href="#ref-for-dom-gyroscope-z-1">5.1.3. Gyroscope.z</a>
    </ul>
   </aside>
 <script>/* script-dfn-panel */
