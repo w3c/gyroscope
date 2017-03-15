@@ -16,7 +16,7 @@ Version History: https://github.com/w3c/gyroscope/commits/gh-pages/index.bs
 Indent: 2
 Repository: w3c/gyroscope
 Markup Shorthands: markdown on
-Inline Github Issues: title
+Inline Github Issues: true
 !Test Suite: <a href="https://github.com/w3c/web-platform-tests/tree/master/gyroscope">web-platform-tests on GitHub</a>
 Boilerplate: omit issues-index, omit conformance
 Default Biblio Status: current
@@ -71,13 +71,13 @@ The gyroscope's associated {{Sensor}} subclass is the {{Gyroscope}} class.
 Gyroscope has a <a>default sensor</a>, which is the device's main gyroscope sensor.
 
 A [=latest reading=] per [=sensor=] of gyroscope type includes three [=map/entries=]
-whose [=map/keys=] are "x", "y", "z" and whose [=map/values=] contain <a>current angular
+whose [=map/keys=] are "x", "y", "z" and whose [=map/values=] contain current <a>angular
 velocity</a> about the corresponding axes.
 
-The <dfn>current angular velocity</dfn> is the rate at which the device rotates
+The <dfn>angular velocity</dfn> is the rate at which the device rotates
 about a specified axis. Its unit is the radian per second (rad/s) [[SI]].
 
-The sign of the <a>current angular velocity</a> depends on the rotation direction and
+The sign of the current <a>angular velocity</a> depends on the rotation direction and
 it must be according to the right-hand convention, such that positive rotation around
 an axis is clockwise when viewed along the positive direction of the axis (see figure below).
 
@@ -105,19 +105,19 @@ To <dfn>Construct a Gyroscope Object</dfn> the user agent must invoke the
 ### Gyroscope.x ### {#gyroscope-x}
 
 The {{Gyroscope/x!!attribute}} attribute of the {{Gyroscope}}
-interface represents the <a>current angular velocity</a> around X-axis.
+interface represents the current <a>angular velocity</a> around X-axis.
 In other words, this attribute returns [=latest reading=]["x"].
 
 ### Gyroscope.y ### {#gyroscope-y}
 
 The {{Gyroscope/y!!attribute}} attribute of the {{Gyroscope}}
-interface represents the <a>current angular velocity</a> around Y-axis.
+interface represents the current <a>angular velocity</a> around Y-axis.
 In other words, this attribute returns [=latest reading=]["y"].
 
 ### Gyroscope.z ### {#gyroscope-z}
 
 The {{Gyroscope/z!!attribute}} attribute of the {{Gyroscope}}
-interface represents the <a>current angular velocity</a> around Z-axis.
+interface represents the current <a>angular velocity</a> around Z-axis.
 In other words, this attribute returns [=latest reading=]["z"].
 
 Acknowledgements {#acknowledgements}
