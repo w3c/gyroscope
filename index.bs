@@ -68,7 +68,9 @@ Model {#model}
 
 The gyroscope's associated {{Sensor}} subclass is the {{Gyroscope}} class.
 
-Gyroscope has a <a>default sensor</a>, which is the device's main gyroscope sensor.
+The Gyroscope has a <a>default sensor</a>, which is the device's main gyroscope sensor.
+
+The Gyroscope has an associated {{PermissionName}} which is <a for="PermissionName" enum-value>"gyroscope"</a>.
 
 A [=latest reading=] per [=sensor=] of gyroscope type includes three [=map/entries=]
 whose [=map/keys=] are "x", "y", "z" and whose [=map/values=] contain current <a>angular
