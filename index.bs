@@ -1,10 +1,10 @@
 <pre class="metadata">
 Title: Gyroscope
 Status: ED
-Level: 1
 ED: https://w3c.github.io/gyroscope/
 Shortname: gyroscope
 TR: http://www.w3.org/TR/gyroscope/
+Previous Version: https://www.w3.org/TR/2016/WD-gyroscope-20160913/
 Editor: Anssi Kostiainen 41974, Intel Corporation, http://intel.com/
 Editor: Mikhail Pozdnyakov 78325, Intel Corporation, http://intel.com/
 Group: dap
