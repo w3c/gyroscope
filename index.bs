@@ -83,7 +83,7 @@ The sign of the current <a>angular velocity</a> depends on the rotation directio
 it must be according to the right-hand convention, such that positive rotation around
 an axis is clockwise when viewed along the positive direction of the axis (see figure below).
 
-<img src="gyroscope_sensor_coordinate_system.png" srcset="gyroscope_sensor_coordinate_system.svg" alt="Device's local coordinate system and rotation.">
+<img src="images/gyroscope_sensor_coordinate_system.png" srcset="images/gyroscope_sensor_coordinate_system.svg" alt="Device's local coordinate system and rotation.">
 
 
 API {#api}
