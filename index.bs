@@ -38,6 +38,11 @@ The Gyroscope API extends the Generic Sensor API [[GENERIC-SENSOR]]
 to provide information about the angular velocity around the device's local X, Y and Z axis 
 in terms of radian per seconds units.
 
+Use Cases and Requirements {#usecases-requirements}
+==============================
+
+The use cases and requirements are addressed in the <cite><a href="https://w3c.github.io/motion-sensors/#usecases-and-requirements">
+Motion Sensors Explainer</a></cite> document.
 
 Examples {#examples}
 ========
