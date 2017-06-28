@@ -52,7 +52,7 @@ Examples {#examples}
     let sensor = new Gyroscope();
     sensor.start();
     
-    sensor.onchange = () => {
+    sensor.onreading = () => {
         console.log("Angular velocity around the X-axis " + sensor.x);
         console.log("Angular velocity around the Y-axis " + sensor.y);
         console.log("Angular velocity around the Z-axis " + sensor.z);
