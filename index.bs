@@ -1,7 +1,7 @@
 <pre class="metadata">
 Title: Gyroscope
 Status: ED
-Level: 1
+Level: none
 ED: https://w3c.github.io/gyroscope/
 Shortname: gyroscope
 TR: http://www.w3.org/TR/gyroscope/
