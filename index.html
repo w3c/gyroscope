@@ -1431,7 +1431,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Gyroscope</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2017-08-14">14 August 2017</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2017-08-22">22 August 2017</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1554,10 +1554,13 @@ beyond those described in the Generic Sensor API <a data-link-type="biblio" href
    <p>A <a data-link-type="dfn" href="https://w3c.github.io/sensors#latest-reading" id="ref-for-latest-reading">latest reading</a> per <a data-link-type="dfn" href="https://w3c.github.io/sensors#sensor" id="ref-for-sensor①">sensor</a> of gyroscope type includes three <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry" id="ref-for-map-entry">entries</a> whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-key" id="ref-for-map-key">keys</a> are "x", "y", "z" and whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-value" id="ref-for-map-value">values</a> contain current <a data-link-type="dfn" href="#angular-velocity" id="ref-for-angular-velocity">angular
 velocity</a> about the corresponding axes.</p>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="angular-velocity">angular velocity</dfn> is the rate at which the device rotates
-about a specified axis. Its unit is the radian per second (rad/s) <a data-link-type="biblio" href="#biblio-si">[SI]</a>.</p>
+about a specified axis in a <a data-link-type="dfn" href="#local-coordinate-system" id="ref-for-local-coordinate-system">local coordinate system</a> defined by the device.
+Its unit is the radian per second (rad/s) <a data-link-type="biblio" href="#biblio-si">[SI]</a>.</p>
    <p>The sign of the current <a data-link-type="dfn" href="#angular-velocity" id="ref-for-angular-velocity①">angular velocity</a> depends on the rotation direction and
-it must be according to the right-hand convention, such that positive rotation around
-an axis is clockwise when viewed along the positive direction of the axis (see figure below).</p>
+it must be according to the right-hand convention in a <a data-link-type="dfn" href="#local-coordinate-system" id="ref-for-local-coordinate-system①">local coordinate system</a> defined by the device, such that positive rotation around an axis is clockwise when
+viewed along the positive direction of the axis (see figure below).</p>
+   <p class="note" role="note"><span>Note:</span> The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="local-coordinate-system">local coordinate system</dfn> of a mobile device is usually defined relative to
+the device’s screen when the device in its default orientation (see figure below).</p>
    <p><img alt="Device’s local coordinate system and rotation." src="images/gyroscope_sensor_coordinate_system.png" srcset="images/gyroscope_sensor_coordinate_system.svg"></p>
    <h2 class="heading settled" data-level="6" id="api"><span class="secno">6. </span><span class="content">API</span><a class="self-link" href="#api"></a></h2>
    <h3 class="heading settled" data-level="6.1" id="gyroscope-interface"><span class="secno">6.1. </span><span class="content">The Gyroscope Interface</span><a class="self-link" href="#gyroscope-interface"></a></h3>
@@ -1605,6 +1608,7 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
    <li><a href="#dom-gyroscope-gyroscope">Gyroscope()</a><span>, in §6.1</span>
    <li><a href="#gyroscope">Gyroscope</a><span>, in §6.1</span>
    <li><a href="#dom-gyroscope-gyroscope">Gyroscope(sensorOptions)</a><span>, in §6.1</span>
+   <li><a href="#local-coordinate-system">local coordinate system</a><span>, in §5</span>
    <li><a href="#dom-gyroscope-x">x</a><span>, in §6.1</span>
    <li><a href="#dom-gyroscope-y">y</a><span>, in §6.1</span>
    <li><a href="#dom-gyroscope-z">z</a><span>, in §6.1</span>
@@ -1675,6 +1679,12 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
     <li><a href="#ref-for-angular-velocity②">6.1.1. Gyroscope.x</a>
     <li><a href="#ref-for-angular-velocity③">6.1.2. Gyroscope.y</a>
     <li><a href="#ref-for-angular-velocity④">6.1.3. Gyroscope.z</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="local-coordinate-system">
+   <b><a href="#local-coordinate-system">#local-coordinate-system</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-local-coordinate-system">5. Model</a> <a href="#ref-for-local-coordinate-system①">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="gyroscope">
