@@ -104,7 +104,7 @@ The Gyroscope Interface {#gyroscope-interface}
 --------------------------------
 
 <pre class="idl">
-  [Constructor(optional SensorOptions sensorOptions)]
+  [Constructor(optional SensorOptions sensorOptions), Exposed=Window]
   interface Gyroscope : Sensor {
     readonly attribute unrestricted double? x;
     readonly attribute unrestricted double? y;
