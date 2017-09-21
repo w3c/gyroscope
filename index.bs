@@ -107,9 +107,9 @@ The Gyroscope Interface {#gyroscope-interface}
 <pre class="idl">
   [Constructor(optional SensorOptions sensorOptions), Exposed=Window]
   interface Gyroscope : Sensor {
-    readonly attribute unrestricted double? x;
-    readonly attribute unrestricted double? y;
-    readonly attribute unrestricted double? z;
+    readonly attribute double? x;
+    readonly attribute double? y;
+    readonly attribute double? z;
   };
 </pre>
 
@@ -120,19 +120,25 @@ To <dfn>Construct a Gyroscope Object</dfn> the user agent must invoke the
 
 The {{Gyroscope/x!!attribute}} attribute of the {{Gyroscope}}
 interface represents the current <a>angular velocity</a> around X-axis.
-In other words, this attribute returns [=latest reading=]["x"].
+In other words, this attribute returns the result of invoking
+[=get value from latest reading=] with <emu-val>this</emu-val>
+and "x" as arguments.
 
 ### Gyroscope.y ### {#gyroscope-y}
 
 The {{Gyroscope/y!!attribute}} attribute of the {{Gyroscope}}
 interface represents the current <a>angular velocity</a> around Y-axis.
-In other words, this attribute returns [=latest reading=]["y"].
+In other words, this attribute returns the result of invoking
+[=get value from latest reading=] with <emu-val>this</emu-val>
+and "y" as arguments.
 
 ### Gyroscope.z ### {#gyroscope-z}
 
 The {{Gyroscope/z!!attribute}} attribute of the {{Gyroscope}}
 interface represents the current <a>angular velocity</a> around Z-axis.
-In other words, this attribute returns [=latest reading=]["z"].
+In other words, this attribute returns the result of invoking
+[=get value from latest reading=] with <emu-val>this</emu-val>
+and "z" as arguments.
 
 Acknowledgements {#acknowledgements}
 ================
