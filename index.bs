@@ -29,8 +29,15 @@ urlPrefix: https://w3c.github.io/sensors; spec: GENERIC-SENSOR
     text: sensor
     text: latest reading
     text: default sensor
-    text: construct a sensor object; url: construct-sensor-object
     text: sensor type
+    text: local coordinate system
+urlPrefix: https://w3c.github.io/accelerometer; spec: ACCELEROMETER
+  type: dfn
+    text: device coordinate system
+    text: screen coordinate system
+    text: construct spatial sensor object
+  type: interface
+    text: SpatialSensorOptions; url: dictdef-spatialsensoroptions
 </pre>
 
 Introduction {#intro}
@@ -92,11 +99,16 @@ it must be according to the right-hand convention in a [=local coordinate system
 defined by the device, such that positive rotation around an axis is clockwise when
 viewed along the positive direction of the axis (see figure below).
 
-Note: The <dfn>local coordinate system</dfn> of a mobile device is usually defined relative to
-the device's screen when the device in its default orientation (see figure below).
-
 <img src="images/gyroscope_sensor_coordinate_system.png" srcset="images/gyroscope_sensor_coordinate_system.svg" alt="Device's local coordinate system and rotation.">
 
+
+Reference Frame {#reference-frame}
+----------------
+
+The reference frame for {{Gyroscope}} is defined with
+a [=local coordinate system=], which can be defined as
+either the [=device coordinate system=], or the
+[=screen coordinate system=].
 
 API {#api}
 ===
@@ -105,7 +117,7 @@ The Gyroscope Interface {#gyroscope-interface}
 --------------------------------
 
 <pre class="idl">
-  [Constructor(optional SensorOptions sensorOptions), SecureContext, Exposed=Window]
+  [Constructor(optional SpatialSensorOptions sensorOptions), SecureContext, Exposed=Window]
   interface Gyroscope : Sensor {
     readonly attribute double? x;
     readonly attribute double? y;
@@ -113,8 +125,8 @@ The Gyroscope Interface {#gyroscope-interface}
   };
 </pre>
 
-To <dfn>Construct a Gyroscope Object</dfn> the user agent must invoke the 
-<a>construct a Sensor object</a> abstract operation.
+To <dfn>Construct a Gyroscope Object</dfn> the user agent must invoke
+the [=construct spatial sensor object=] abstract operation.
 
 ### Gyroscope.x ### {#gyroscope-x}
 
