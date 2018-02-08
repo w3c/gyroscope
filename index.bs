@@ -31,13 +31,12 @@ urlPrefix: https://w3c.github.io/sensors; spec: GENERIC-SENSOR
     text: default sensor
     text: sensor type
     text: local coordinate system
+    text: sensor readings
+    text: construct a sensor object; url: construct-sensor-object
 urlPrefix: https://w3c.github.io/accelerometer; spec: ACCELEROMETER
   type: dfn
     text: device coordinate system
     text: screen coordinate system
-    text: construct spatial sensor object
-  type: interface
-    text: SpatialSensorOptions; url: dictdef-spatialsensoroptions
 </pre>
 
 Introduction {#intro}
@@ -105,28 +104,33 @@ viewed along the positive direction of the axis (see figure below).
 Reference Frame {#reference-frame}
 ----------------
 
-The reference frame for {{Gyroscope}} is defined with
-a [=local coordinate system=], which can be defined as
-either the [=device coordinate system=], or the
-[=screen coordinate system=].
+The [=local coordinate system=] represents the reference frame for the
+{{Gyroscope}} [=sensor readings|readings=]. It can be either
+the [=device coordinate system=] or the [=screen coordinate system=].
 
 API {#api}
 ===
 
 The Gyroscope Interface {#gyroscope-interface}
---------------------------------
+------------------------
 
 <pre class="idl">
-  [Constructor(optional SpatialSensorOptions sensorOptions), SecureContext, Exposed=Window]
+  [Constructor(optional GyroscopeSensorOptions sensorOptions), SecureContext, Exposed=Window]
   interface Gyroscope : Sensor {
     readonly attribute double? x;
     readonly attribute double? y;
     readonly attribute double? z;
   };
+
+  enum LocalCoordinateSystem { "device", "screen" };
+
+  dictionary GyroscopeSensorOptions : SensorOptions  {
+    LocalCoordinateSystem referenceFrame = "device";
+  };
 </pre>
 
-To <dfn>Construct a Gyroscope Object</dfn> the user agent must invoke
-the [=construct spatial sensor object=] abstract operation.
+To construct a {{Gyroscope}} object the user agent must invoke
+the [=construct a gyroscope object=] abstract operation.
 
 ### Gyroscope.x ### {#gyroscope-x}
 
@@ -151,6 +155,26 @@ interface represents the current <a>angular velocity</a> around Z-axis.
 In other words, this attribute returns the result of invoking
 [=get value from latest reading=] with <emu-val>this</emu-val>
 and "z" as arguments.
+
+Abstract Operations {#abstract-operations}
+===================
+
+<h3 dfn export>Construct a Gyroscope object</h3>
+
+<div algorithm="construct a gyroscope object">
+
+    : input
+    :: |options|, a {{GyroscopeSensorOptions}} object.
+    : output
+    :: A {{Sensor}} object.
+
+    1. Let |sensor_instance| be the result of invoking [=construct a Sensor object=] with |options|.
+    1. If |options|.{{referenceFrame!!dict-member}} is "screen", then:
+       1.  Define [=local coordinate system=] for |sensor_instance|
+           as the [=screen coordinate system=].
+    1. Otherwise, define [=local coordinate system=] for |sensor_instance|
+       as the [=device coordinate system=].
+</div>
 
 Acknowledgements {#acknowledgements}
 ================
