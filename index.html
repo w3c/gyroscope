@@ -1431,7 +1431,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Gyroscope</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-02-07">7 February 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-02-08">8 February 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1510,8 +1510,13 @@ the rate of rotation around the device’s local three primary axes.</p>
         <li><a href="#gyroscope-z"><span class="secno">6.1.3</span> <span class="content">Gyroscope.z</span></a>
        </ol>
      </ol>
-    <li><a href="#acknowledgements"><span class="secno">7</span> <span class="content">Acknowledgements</span></a>
-    <li><a href="#conformance"><span class="secno">8</span> <span class="content">Conformance</span></a>
+    <li>
+     <a href="#abstract-operations"><span class="secno">7</span> <span class="content">Abstract Operations</span></a>
+     <ol class="toc">
+      <li><a href="#construct-a-gyroscope-object"><span class="secno">7.1</span> <span class="content">Construct a Gyroscope object</span></a>
+     </ol>
+    <li><a href="#acknowledgements"><span class="secno">8</span> <span class="content">Acknowledgements</span></a>
+    <li><a href="#conformance"><span class="secno">9</span> <span class="content">Conformance</span></a>
     <li>
      <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
      <ol class="toc">
@@ -1565,32 +1570,61 @@ it must be according to the right-hand convention in a <a data-link-type="dfn" h
 viewed along the positive direction of the axis (see figure below).</p>
    <p><img alt="Device’s local coordinate system and rotation." src="images/gyroscope_sensor_coordinate_system.png" srcset="images/gyroscope_sensor_coordinate_system.svg"></p>
    <h3 class="heading settled" data-level="5.1" id="reference-frame"><span class="secno">5.1. </span><span class="content">Reference Frame</span><a class="self-link" href="#reference-frame"></a></h3>
-   <p>The reference frame for <code class="idl"><a data-link-type="idl" href="#gyroscope" id="ref-for-gyroscope①">Gyroscope</a></code> is defined with
-a <a data-link-type="dfn" href="https://w3c.github.io/sensors#local-coordinate-system" id="ref-for-local-coordinate-system②">local coordinate system</a>, which can be defined as
-either the <a data-link-type="dfn" href="https://w3c.github.io/accelerometer#device-coordinate-system" id="ref-for-device-coordinate-system">device coordinate system</a>, or the <a data-link-type="dfn" href="https://w3c.github.io/accelerometer#screen-coordinate-system" id="ref-for-screen-coordinate-system">screen coordinate system</a>.</p>
+   <p>The <a data-link-type="dfn" href="https://w3c.github.io/sensors#local-coordinate-system" id="ref-for-local-coordinate-system②">local coordinate system</a> represents the reference frame for the <code class="idl"><a data-link-type="idl" href="#gyroscope" id="ref-for-gyroscope①">Gyroscope</a></code> <a data-link-type="dfn" href="https://w3c.github.io/sensors#sensor-readings" id="ref-for-sensor-readings">readings</a>. It can be either
+the <a data-link-type="dfn" href="https://w3c.github.io/accelerometer#device-coordinate-system" id="ref-for-device-coordinate-system">device coordinate system</a> or the <a data-link-type="dfn" href="https://w3c.github.io/accelerometer#screen-coordinate-system" id="ref-for-screen-coordinate-system">screen coordinate system</a>.</p>
    <h2 class="heading settled" data-level="6" id="api"><span class="secno">6. </span><span class="content">API</span><a class="self-link" href="#api"></a></h2>
    <h3 class="heading settled" data-level="6.1" id="gyroscope-interface"><span class="secno">6.1. </span><span class="content">The Gyroscope Interface</span><a class="self-link" href="#gyroscope-interface"></a></h3>
-<pre class="idl highlight def">[<dfn class="nv idl-code" data-dfn-for="Gyroscope" data-dfn-type="constructor" data-export="" data-lt="Gyroscope(sensorOptions)|Gyroscope()" id="dom-gyroscope-gyroscope"><code>Constructor</code><a class="self-link" href="#dom-gyroscope-gyroscope"></a></dfn>(<span class="kt">optional</span> <a class="n" data-link-type="idl-name" href="https://w3c.github.io/accelerometer#dictdef-spatialsensoroptions" id="ref-for-dictdef-spatialsensoroptions">SpatialSensorOptions</a> <dfn class="nv idl-code" data-dfn-for="Gyroscope/Gyroscope(sensorOptions)" data-dfn-type="argument" data-export="" id="dom-gyroscope-gyroscope-sensoroptions-sensoroptions"><code>sensorOptions</code><a class="self-link" href="#dom-gyroscope-gyroscope-sensoroptions-sensoroptions"></a></dfn>), <a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SecureContext" id="ref-for-SecureContext">SecureContext</a>, <a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed">Exposed</a>=<span class="n">Window</span>]
+<pre class="idl highlight def">[<dfn class="nv idl-code" data-dfn-for="Gyroscope" data-dfn-type="constructor" data-export="" data-lt="Gyroscope(sensorOptions)|Gyroscope()" id="dom-gyroscope-gyroscope"><code>Constructor</code><a class="self-link" href="#dom-gyroscope-gyroscope"></a></dfn>(<span class="kt">optional</span> <a class="n" data-link-type="idl-name" href="#dictdef-gyroscopesensoroptions" id="ref-for-dictdef-gyroscopesensoroptions">GyroscopeSensorOptions</a> <dfn class="nv idl-code" data-dfn-for="Gyroscope/Gyroscope(sensorOptions)" data-dfn-type="argument" data-export="" id="dom-gyroscope-gyroscope-sensoroptions-sensoroptions"><code>sensorOptions</code><a class="self-link" href="#dom-gyroscope-gyroscope-sensoroptions-sensoroptions"></a></dfn>), <a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SecureContext" id="ref-for-SecureContext">SecureContext</a>, <a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed">Exposed</a>=<span class="n">Window</span>]
 <span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="gyroscope"><code>Gyroscope</code></dfn> : <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor②">Sensor</a> {
   <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double"><span class="kt">double</span></a>? <dfn class="nv dfn-paneled idl-code" data-dfn-for="Gyroscope" data-dfn-type="attribute" data-export="" data-readonly="" data-type="double?" id="dom-gyroscope-x"><code>x</code></dfn>;
   <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double①"><span class="kt">double</span></a>? <dfn class="nv dfn-paneled idl-code" data-dfn-for="Gyroscope" data-dfn-type="attribute" data-export="" data-readonly="" data-type="double?" id="dom-gyroscope-y"><code>y</code></dfn>;
   <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double②"><span class="kt">double</span></a>? <dfn class="nv dfn-paneled idl-code" data-dfn-for="Gyroscope" data-dfn-type="attribute" data-export="" data-readonly="" data-type="double?" id="dom-gyroscope-z"><code>z</code></dfn>;
 };
+
+<span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-localcoordinatesystem"><code>LocalCoordinateSystem</code></dfn> { <dfn class="s idl-code" data-dfn-for="LocalCoordinateSystem" data-dfn-type="enum-value" data-export="" data-lt="&quot;device&quot;|device" id="dom-localcoordinatesystem-device"><code>"device"</code><a class="self-link" href="#dom-localcoordinatesystem-device"></a></dfn>, <dfn class="s idl-code" data-dfn-for="LocalCoordinateSystem" data-dfn-type="enum-value" data-export="" data-lt="&quot;screen&quot;|screen" id="dom-localcoordinatesystem-screen"><code>"screen"</code><a class="self-link" href="#dom-localcoordinatesystem-screen"></a></dfn> };
+
+<span class="kt">dictionary</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="dictionary" data-export="" id="dictdef-gyroscopesensoroptions"><code>GyroscopeSensorOptions</code></dfn> : <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#dictdef-sensoroptions" id="ref-for-dictdef-sensoroptions">SensorOptions</a>  {
+  <a class="n" data-link-type="idl-name" href="#enumdef-localcoordinatesystem" id="ref-for-enumdef-localcoordinatesystem">LocalCoordinateSystem</a> <dfn class="nv dfn-paneled idl-code" data-default="&quot;device&quot;" data-dfn-for="GyroscopeSensorOptions" data-dfn-type="dict-member" data-export="" data-type="LocalCoordinateSystem " id="dom-gyroscopesensoroptions-referenceframe"><code>referenceFrame</code></dfn> = "device";
+};
 </pre>
-   <p>To <dfn data-dfn-type="dfn" data-noexport="" id="construct-a-gyroscope-object">Construct a Gyroscope Object<a class="self-link" href="#construct-a-gyroscope-object"></a></dfn> the user agent must invoke
-the <a data-link-type="dfn" href="https://w3c.github.io/accelerometer#construct-spatial-sensor-object" id="ref-for-construct-spatial-sensor-object">construct spatial sensor object</a> abstract operation.</p>
+   <p>To construct a <code class="idl"><a data-link-type="idl" href="#gyroscope" id="ref-for-gyroscope②">Gyroscope</a></code> object the user agent must invoke
+the <a data-link-type="dfn" href="#construct-a-gyroscope-object" id="ref-for-construct-a-gyroscope-object">construct a gyroscope object</a> abstract operation.</p>
    <h4 class="heading settled" data-level="6.1.1" id="gyroscope-x"><span class="secno">6.1.1. </span><span class="content">Gyroscope.x</span><a class="self-link" href="#gyroscope-x"></a></h4>
-   <p>The <code class="idl"><a class="idl-code" data-link-type="attribute" href="#dom-gyroscope-x" id="ref-for-dom-gyroscope-x">x</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#gyroscope" id="ref-for-gyroscope②">Gyroscope</a></code> interface represents the current <a data-link-type="dfn" href="#angular-velocity" id="ref-for-angular-velocity②">angular velocity</a> around X-axis.
+   <p>The <code class="idl"><a class="idl-code" data-link-type="attribute" href="#dom-gyroscope-x" id="ref-for-dom-gyroscope-x">x</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#gyroscope" id="ref-for-gyroscope③">Gyroscope</a></code> interface represents the current <a data-link-type="dfn" href="#angular-velocity" id="ref-for-angular-velocity②">angular velocity</a> around X-axis.
 In other words, this attribute returns the result of invoking <a data-link-type="dfn" href="https://w3c.github.io/sensors/#get-value-from-latest-reading" id="ref-for-get-value-from-latest-reading">get value from latest reading</a> with <emu-val>this</emu-val> and "x" as arguments.</p>
    <h4 class="heading settled" data-level="6.1.2" id="gyroscope-y"><span class="secno">6.1.2. </span><span class="content">Gyroscope.y</span><a class="self-link" href="#gyroscope-y"></a></h4>
-   <p>The <code class="idl"><a class="idl-code" data-link-type="attribute" href="#dom-gyroscope-y" id="ref-for-dom-gyroscope-y">y</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#gyroscope" id="ref-for-gyroscope③">Gyroscope</a></code> interface represents the current <a data-link-type="dfn" href="#angular-velocity" id="ref-for-angular-velocity③">angular velocity</a> around Y-axis.
+   <p>The <code class="idl"><a class="idl-code" data-link-type="attribute" href="#dom-gyroscope-y" id="ref-for-dom-gyroscope-y">y</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#gyroscope" id="ref-for-gyroscope④">Gyroscope</a></code> interface represents the current <a data-link-type="dfn" href="#angular-velocity" id="ref-for-angular-velocity③">angular velocity</a> around Y-axis.
 In other words, this attribute returns the result of invoking <a data-link-type="dfn" href="https://w3c.github.io/sensors/#get-value-from-latest-reading" id="ref-for-get-value-from-latest-reading①">get value from latest reading</a> with <emu-val>this</emu-val> and "y" as arguments.</p>
    <h4 class="heading settled" data-level="6.1.3" id="gyroscope-z"><span class="secno">6.1.3. </span><span class="content">Gyroscope.z</span><a class="self-link" href="#gyroscope-z"></a></h4>
-   <p>The <code class="idl"><a class="idl-code" data-link-type="attribute" href="#dom-gyroscope-z" id="ref-for-dom-gyroscope-z">z</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#gyroscope" id="ref-for-gyroscope④">Gyroscope</a></code> interface represents the current <a data-link-type="dfn" href="#angular-velocity" id="ref-for-angular-velocity④">angular velocity</a> around Z-axis.
+   <p>The <code class="idl"><a class="idl-code" data-link-type="attribute" href="#dom-gyroscope-z" id="ref-for-dom-gyroscope-z">z</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#gyroscope" id="ref-for-gyroscope⑤">Gyroscope</a></code> interface represents the current <a data-link-type="dfn" href="#angular-velocity" id="ref-for-angular-velocity④">angular velocity</a> around Z-axis.
 In other words, this attribute returns the result of invoking <a data-link-type="dfn" href="https://w3c.github.io/sensors/#get-value-from-latest-reading" id="ref-for-get-value-from-latest-reading②">get value from latest reading</a> with <emu-val>this</emu-val> and "z" as arguments.</p>
-   <h2 class="heading settled" data-level="7" id="acknowledgements"><span class="secno">7. </span><span class="content">Acknowledgements</span><a class="self-link" href="#acknowledgements"></a></h2>
+   <h2 class="heading settled" data-level="7" id="abstract-operations"><span class="secno">7. </span><span class="content">Abstract Operations</span><a class="self-link" href="#abstract-operations"></a></h2>
+   <h3 class="heading settled dfn-paneled" data-dfn-type="dfn" data-export="" data-level="7.1" data-lt="Construct a Gyroscope object" id="construct-a-gyroscope-object"><span class="secno">7.1. </span><span class="content">Construct a Gyroscope object</span></h3>
+   <div class="algorithm" data-algorithm="construct a gyroscope object">
+    <dl>
+     <dt data-md="">input
+     <dd data-md="">
+      <p><var>options</var>, a <code class="idl"><a data-link-type="idl" href="#dictdef-gyroscopesensoroptions" id="ref-for-dictdef-gyroscopesensoroptions①">GyroscopeSensorOptions</a></code> object.</p>
+     <dt data-md="">output
+     <dd data-md="">
+      <p>A <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor③">Sensor</a></code> object.</p>
+    </dl>
+    <ol>
+     <li data-md="">
+      <p>Let <var>sensor_instance</var> be the result of invoking <a data-link-type="dfn" href="https://w3c.github.io/sensors#construct-sensor-object" id="ref-for-construct-sensor-object">construct a Sensor object</a> with <var>options</var>.</p>
+     <li data-md="">
+      <p>If <var>options</var>.<code class="idl"><a class="idl-code" data-link-type="dict-member" href="#dom-gyroscopesensoroptions-referenceframe" id="ref-for-dom-gyroscopesensoroptions-referenceframe">referenceFrame</a></code> is "screen", then:</p>
+      <ol>
+       <li data-md="">
+        <p>Define <a data-link-type="dfn" href="https://w3c.github.io/sensors#local-coordinate-system" id="ref-for-local-coordinate-system③">local coordinate system</a> for <var>sensor_instance</var> as the <a data-link-type="dfn" href="https://w3c.github.io/accelerometer#screen-coordinate-system" id="ref-for-screen-coordinate-system①">screen coordinate system</a>.</p>
+      </ol>
+     <li data-md="">
+      <p>Otherwise, define <a data-link-type="dfn" href="https://w3c.github.io/sensors#local-coordinate-system" id="ref-for-local-coordinate-system④">local coordinate system</a> for <var>sensor_instance</var> as the <a data-link-type="dfn" href="https://w3c.github.io/accelerometer#device-coordinate-system" id="ref-for-device-coordinate-system①">device coordinate system</a>.</p>
+    </ol>
+   </div>
+   <h2 class="heading settled" data-level="8" id="acknowledgements"><span class="secno">8. </span><span class="content">Acknowledgements</span><a class="self-link" href="#acknowledgements"></a></h2>
    <p>Tobie Langel for the work on Generic Sensor API.</p>
-   <h2 class="heading settled" data-level="8" id="conformance"><span class="secno">8. </span><span class="content">Conformance</span><a class="self-link" href="#conformance"></a></h2>
+   <h2 class="heading settled" data-level="9" id="conformance"><span class="secno">9. </span><span class="content">Conformance</span><a class="self-link" href="#conformance"></a></h2>
    <p>Conformance requirements are expressed with a combination of
 descriptive assertions and RFC 2119 terminology. The key words "MUST",
 "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT",
@@ -1610,8 +1644,10 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
   <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
   <ul class="index">
    <li><a href="#angular-velocity">angular velocity</a><span>, in §5</span>
-   <li><a href="#conformant-user-agent">conformant user agent</a><span>, in §8</span>
-   <li><a href="#construct-a-gyroscope-object">Construct a Gyroscope Object</a><span>, in §6.1</span>
+   <li><a href="#conformant-user-agent">conformant user agent</a><span>, in §9</span>
+   <li><a href="#construct-a-gyroscope-object">Construct a Gyroscope object</a><span>, in §7</span>
+   <li><a href="#dom-localcoordinatesystem-device">"device"</a><span>, in §6.1</span>
+   <li><a href="#dom-localcoordinatesystem-device">device</a><span>, in §6.1</span>
    <li><a href="#dom-gyroscope-gyroscope">Gyroscope()</a><span>, in §6.1</span>
    <li>
     Gyroscope
@@ -1620,6 +1656,11 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
      <li><a href="#gyroscope">(interface)</a><span>, in §6.1</span>
     </ul>
    <li><a href="#dom-gyroscope-gyroscope">Gyroscope(sensorOptions)</a><span>, in §6.1</span>
+   <li><a href="#dictdef-gyroscopesensoroptions">GyroscopeSensorOptions</a><span>, in §6.1</span>
+   <li><a href="#enumdef-localcoordinatesystem">LocalCoordinateSystem</a><span>, in §6.1</span>
+   <li><a href="#dom-gyroscopesensoroptions-referenceframe">referenceFrame</a><span>, in §6.1</span>
+   <li><a href="#dom-localcoordinatesystem-screen">"screen"</a><span>, in §6.1</span>
+   <li><a href="#dom-localcoordinatesystem-screen">screen</a><span>, in §6.1</span>
    <li><a href="#dom-gyroscope-x">x</a><span>, in §6.1</span>
    <li><a href="#dom-gyroscope-y">y</a><span>, in §6.1</span>
    <li><a href="#dom-gyroscope-z">z</a><span>, in §6.1</span>
@@ -1629,8 +1670,6 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
    <li>
     <a data-link-type="biblio">[accelerometer]</a> defines the following terms:
     <ul>
-     <li><a href="https://w3c.github.io/accelerometer#dictdef-spatialsensoroptions">SpatialSensorOptions</a>
-     <li><a href="https://w3c.github.io/accelerometer#construct-spatial-sensor-object">construct spatial sensor object</a>
      <li><a href="https://w3c.github.io/accelerometer#device-coordinate-system">device coordinate system</a>
      <li><a href="https://w3c.github.io/accelerometer#screen-coordinate-system">screen coordinate system</a>
     </ul>
@@ -1638,10 +1677,13 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
     <a data-link-type="biblio">[GENERIC-SENSOR]</a> defines the following terms:
     <ul>
      <li><a href="https://w3c.github.io/sensors/#sensor">Sensor</a>
+     <li><a href="https://w3c.github.io/sensors/#dictdef-sensoroptions">SensorOptions</a>
+     <li><a href="https://w3c.github.io/sensors#construct-sensor-object">construct a sensor object</a>
      <li><a href="https://w3c.github.io/sensors#default-sensor">default sensor</a>
      <li><a href="https://w3c.github.io/sensors/#get-value-from-latest-reading">get value from latest reading</a>
      <li><a href="https://w3c.github.io/sensors#latest-reading">latest reading</a>
      <li><a href="https://w3c.github.io/sensors#local-coordinate-system">local coordinate system</a>
+     <li><a href="https://w3c.github.io/sensors#sensor-readings">sensor readings</a>
      <li><a href="https://w3c.github.io/sensors#sensor-type">sensor type</a>
     </ul>
    <li>
@@ -1687,11 +1729,17 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
    <dd><a href="http://www.bipm.org/en/publications/si-brochure/">SI Brochure: The International System of Units (SI), 8th edition</a>. 2014. URL: <a href="http://www.bipm.org/en/publications/si-brochure/">http://www.bipm.org/en/publications/si-brochure/</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
-<pre class="idl highlight def">[<a class="nv" href="#dom-gyroscope-gyroscope"><code>Constructor</code></a>(<span class="kt">optional</span> <a class="n" data-link-type="idl-name" href="https://w3c.github.io/accelerometer#dictdef-spatialsensoroptions" id="ref-for-dictdef-spatialsensoroptions①">SpatialSensorOptions</a> <a class="nv" href="#dom-gyroscope-gyroscope-sensoroptions-sensoroptions"><code>sensorOptions</code></a>), <a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SecureContext" id="ref-for-SecureContext①">SecureContext</a>, <a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed①">Exposed</a>=<span class="n">Window</span>]
+<pre class="idl highlight def">[<a class="nv" href="#dom-gyroscope-gyroscope"><code>Constructor</code></a>(<span class="kt">optional</span> <a class="n" data-link-type="idl-name" href="#dictdef-gyroscopesensoroptions" id="ref-for-dictdef-gyroscopesensoroptions②">GyroscopeSensorOptions</a> <a class="nv" href="#dom-gyroscope-gyroscope-sensoroptions-sensoroptions"><code>sensorOptions</code></a>), <a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SecureContext" id="ref-for-SecureContext①">SecureContext</a>, <a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed①">Exposed</a>=<span class="n">Window</span>]
 <span class="kt">interface</span> <a class="nv" href="#gyroscope"><code>Gyroscope</code></a> : <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor②①">Sensor</a> {
   <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double③"><span class="kt">double</span></a>? <a class="nv" data-readonly="" data-type="double?" href="#dom-gyroscope-x"><code>x</code></a>;
   <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double①①"><span class="kt">double</span></a>? <a class="nv" data-readonly="" data-type="double?" href="#dom-gyroscope-y"><code>y</code></a>;
   <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double②①"><span class="kt">double</span></a>? <a class="nv" data-readonly="" data-type="double?" href="#dom-gyroscope-z"><code>z</code></a>;
+};
+
+<span class="kt">enum</span> <a class="nv" href="#enumdef-localcoordinatesystem"><code>LocalCoordinateSystem</code></a> { <a class="s" href="#dom-localcoordinatesystem-device"><code>"device"</code></a>, <a class="s" href="#dom-localcoordinatesystem-screen"><code>"screen"</code></a> };
+
+<span class="kt">dictionary</span> <a class="nv" href="#dictdef-gyroscopesensoroptions"><code>GyroscopeSensorOptions</code></a> : <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#dictdef-sensoroptions" id="ref-for-dictdef-sensoroptions①">SensorOptions</a>  {
+  <a class="n" data-link-type="idl-name" href="#enumdef-localcoordinatesystem" id="ref-for-enumdef-localcoordinatesystem①">LocalCoordinateSystem</a> <a class="nv" data-default="&quot;device&quot;" data-type="LocalCoordinateSystem " href="#dom-gyroscopesensoroptions-referenceframe"><code>referenceFrame</code></a> = "device";
 };
 
 </pre>
@@ -1715,9 +1763,10 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
    <ul>
     <li><a href="#ref-for-gyroscope">5. Model</a>
     <li><a href="#ref-for-gyroscope①">5.1. Reference Frame</a>
-    <li><a href="#ref-for-gyroscope②">6.1.1. Gyroscope.x</a>
-    <li><a href="#ref-for-gyroscope③">6.1.2. Gyroscope.y</a>
-    <li><a href="#ref-for-gyroscope④">6.1.3. Gyroscope.z</a>
+    <li><a href="#ref-for-gyroscope②">6.1. The Gyroscope Interface</a>
+    <li><a href="#ref-for-gyroscope③">6.1.1. Gyroscope.x</a>
+    <li><a href="#ref-for-gyroscope④">6.1.2. Gyroscope.y</a>
+    <li><a href="#ref-for-gyroscope⑤">6.1.3. Gyroscope.z</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-gyroscope-x">
@@ -1736,6 +1785,31 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
    <b><a href="#dom-gyroscope-z">#dom-gyroscope-z</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-gyroscope-z">6.1.3. Gyroscope.z</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="enumdef-localcoordinatesystem">
+   <b><a href="#enumdef-localcoordinatesystem">#enumdef-localcoordinatesystem</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-enumdef-localcoordinatesystem">6.1. The Gyroscope Interface</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dictdef-gyroscopesensoroptions">
+   <b><a href="#dictdef-gyroscopesensoroptions">#dictdef-gyroscopesensoroptions</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dictdef-gyroscopesensoroptions">6.1. The Gyroscope Interface</a>
+    <li><a href="#ref-for-dictdef-gyroscopesensoroptions①">7.1. Construct a Gyroscope object</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-gyroscopesensoroptions-referenceframe">
+   <b><a href="#dom-gyroscopesensoroptions-referenceframe">#dom-gyroscopesensoroptions-referenceframe</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-gyroscopesensoroptions-referenceframe">7.1. Construct a Gyroscope object</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="construct-a-gyroscope-object">
+   <b><a href="#construct-a-gyroscope-object">#construct-a-gyroscope-object</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-construct-a-gyroscope-object">6.1. The Gyroscope Interface</a>
    </ul>
   </aside>
 <script>/* script-dfn-panel */
