@@ -166,14 +166,20 @@ Abstract Operations {#abstract-operations}
     : input
     :: |options|, a {{GyroscopeSensorOptions}} object.
     : output
-    :: A {{Sensor}} object.
+    :: A {{Gyroscope}} object.
 
-    1. Let |sensor_instance| be the result of invoking [=construct a Sensor object=] with |options|.
-    1. If |options|.{{referenceFrame!!dict-member}} is "screen", then:
-       1.  Define [=local coordinate system=] for |sensor_instance|
-           as the [=screen coordinate system=].
-    1. Otherwise, define [=local coordinate system=] for |sensor_instance|
-       as the [=device coordinate system=].
+    1.  Let |allowed| be the result of invoking [=check sensor policy-controlled features=]
+        with <a>Gyroscope</a>.
+    1.  If |allowed| is false, then:
+        1.  [=Throw=] a {{SecurityError}} {{DOMException}}.
+    1.  Let |gyroscope| be the new {{Gyroscope}} object.
+    1.  Invoke [=initialize a sensor object=] with |gyroscope| and |options|.
+    1.  If |options|.{{referenceFrame!!dict-member}} is "screen", then:
+        1.  Define [=local coordinate system=] for |gyroscope|
+            as the [=screen coordinate system=].
+    1.  Otherwise, define [=local coordinate system=] for |gyroscope|
+        as the [=device coordinate system=].
+    1.  Return |gyroscope|.
 </div>
 
 Acknowledgements {#acknowledgements}
