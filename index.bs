@@ -26,25 +26,56 @@ Default Biblio Status: current
 urlPrefix: https://w3c.github.io/sensors; spec: GENERIC-SENSOR
   type: dfn
     text: high-level
-    text: sensor
     text: latest reading
     text: default sensor
     text: sensor type
     text: local coordinate system
     text: sensor readings
-    text: construct a sensor object; url: construct-sensor-object
     text: sensor permission name; url: sensor-permission-names
+    text: location tracking; url: location-tracking
+    text: keylogging; url: keystroke-monitoring
+    text: fingerprinting; url: device-fingerprinting
+    text: user identifying; url: user-identifying
+    text: eavesdropping; url: eavesdropping
+    text: generic mitigations; url: mitigation-strategies
 urlPrefix: https://w3c.github.io/accelerometer; spec: ACCELEROMETER
   type: dfn
     text: device coordinate system
     text: screen coordinate system
 </pre>
 
+<pre class=biblio>
+{
+    "KEYSTROKEDEFENSE": {
+        "authors": [
+            "Song, Yihang, et al"
+        ],
+        "id": "KEYSTROKEDEFENSE",
+        "href": "https://arxiv.org/abs/1410.7746",
+        "title": "Two novel defenses against motion-based keystroke inference attacks",
+        "date": "2014",
+        "status": "Informational",
+        "publisher": "arXiv"
+     },
+    "TOUCHSIGNATURES": {
+        "authors": [
+            "Mehrnezhad, Maryam, et al"
+        ],
+        "id": "TOUCHSIGNATURES",
+        "href": "https://arxiv.org/abs/1602.04115",
+        "title": "Touchsignatures: identification of user touch actions and pins based on mobile sensor data via javascript",
+        "date": "2016",
+        "status": "Informational",
+        "publisher": "Journal of Information Security and Applications"
+     }
+}
+</pre>
+
 Introduction {#intro}
 ============
 
 The Gyroscope API extends the Generic Sensor API [[GENERIC-SENSOR]]
-to provide information about the angular velocity around the device's local X, Y and Z axis 
+to provide information about the angular velocity around the device's local X, Y and Z axis
 in terms of radian per seconds units.
 
 Use Cases and Requirements {#usecases-requirements}
@@ -60,7 +91,7 @@ Examples {#examples}
     <pre highlight="js">
     let sensor = new Gyroscope();
     sensor.start();
-    
+
     sensor.onreading = () => {
         console.log("Angular velocity around the X-axis " + sensor.x);
         console.log("Angular velocity around the Y-axis " + sensor.y);
@@ -74,8 +105,18 @@ Examples {#examples}
 Security and Privacy Considerations {#security-and-privacy}
 ===================================
 
-There are no specific security and privacy considerations
-beyond those described in the Generic Sensor API [[!GENERIC-SENSOR]].
+[=Sensor readings=] provided by inertial sensors, such as gyroscope, could be used by adversaries
+to exploit various security threats, for example, [=keylogging=], [=location tracking=],
+[=fingerprinting=], [=user identifying=] and even [=eavesdropping=].
+
+Research papers published by security community, for instance, [[KEYSTROKEDEFENSE]], indicate that
+by throttling the frequency, risks of successful attacks are not fully eliminated, while throttling
+may greatly affect usefulness of a web application with legitimate reasons to use the sensors.
+
+The [[TOUCHSIGNATURES]] research paper proposes that implementations can provide visual indication when
+inertial sensors are in use and/or require explicit user consent to access [=sensor readings=].
+These mitigation strategies complement the [=generic mitigations=] defined
+in the Generic Sensor API [[!GENERIC-SENSOR]].
 
 Model {#model}
 =====
