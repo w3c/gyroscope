@@ -33,6 +33,7 @@ urlPrefix: https://w3c.github.io/sensors; spec: GENERIC-SENSOR
     text: local coordinate system
     text: sensor readings
     text: construct a sensor object; url: construct-sensor-object
+    text: sensor permission name; url: sensor-permission-names
 urlPrefix: https://w3c.github.io/accelerometer; spec: ACCELEROMETER
   type: dfn
     text: device coordinate system
@@ -83,7 +84,7 @@ The <dfn id="gyroscope-sensor-type">Gyroscope</dfn> <a>sensor type</a>'s associa
 
 The <a>Gyroscope</a> has a <a>default sensor</a>, which is the device's main gyroscope sensor.
 
-The <a>Gyroscope</a> has an associated {{PermissionName}} which is <a for="PermissionName" enum-value>"gyroscope"</a>.
+The <a>Gyroscope</a> has an associated [=sensor permission name=] which is <a for="PermissionName" enum-value>"gyroscope"</a>.
 
 A [=latest reading=] of a {{Sensor}} of <a>Gyroscope</a> <a>sensor type</a> includes three [=map/entries=]
 whose [=map/keys=] are "x", "y", "z" and whose [=map/values=] contain current <a>angular
