@@ -164,10 +164,10 @@ The Gyroscope Interface {#gyroscope-interface}
     readonly attribute double? z;
   };
 
-  enum LocalCoordinateSystem { "device", "screen" };
+  enum GyroscopeLocalCoordinateSystem { "device", "screen" };
 
   dictionary GyroscopeSensorOptions : SensorOptions  {
-    LocalCoordinateSystem referenceFrame = "device";
+    GyroscopeLocalCoordinateSystem referenceFrame = "device";
   };
 </pre>
 
