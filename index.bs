@@ -166,7 +166,7 @@ The Gyroscope Interface {#gyroscope-interface}
 
   enum GyroscopeLocalCoordinateSystem { "device", "screen" };
 
-  dictionary GyroscopeSensorOptions : SensorOptions  {
+  dictionary GyroscopeSensorOptions : SensorOptions {
     GyroscopeLocalCoordinateSystem referenceFrame = "device";
   };
 </pre>
