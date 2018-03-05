@@ -1185,6 +1185,7 @@ Possible extra rowspan handling
   </style>
   <meta content="Bikeshed version 66a76cd06d4fa9e491630583356008a71a166760" name="generator">
   <link href="http://www.w3.org/TR/gyroscope/" rel="canonical">
+  <meta content="dc8a56a6d3bd79e9bb252b68049d0727c73bf20d" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1431,7 +1432,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Gyroscope</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-03-02">2 March 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-03-05">5 March 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1590,7 +1591,7 @@ the <a data-link-type="dfn" href="https://w3c.github.io/accelerometer#device-coo
 
 <span class="kt">enum</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="enum" data-export="" id="enumdef-gyroscopelocalcoordinatesystem"><code>GyroscopeLocalCoordinateSystem</code></dfn> { <dfn class="s idl-code" data-dfn-for="GyroscopeLocalCoordinateSystem" data-dfn-type="enum-value" data-export="" data-lt="&quot;device&quot;|device" id="dom-gyroscopelocalcoordinatesystem-device"><code>"device"</code><a class="self-link" href="#dom-gyroscopelocalcoordinatesystem-device"></a></dfn>, <dfn class="s idl-code" data-dfn-for="GyroscopeLocalCoordinateSystem" data-dfn-type="enum-value" data-export="" data-lt="&quot;screen&quot;|screen" id="dom-gyroscopelocalcoordinatesystem-screen"><code>"screen"</code><a class="self-link" href="#dom-gyroscopelocalcoordinatesystem-screen"></a></dfn> };
 
-<span class="kt">dictionary</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="dictionary" data-export="" id="dictdef-gyroscopesensoroptions"><code>GyroscopeSensorOptions</code></dfn> : <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#dictdef-sensoroptions" id="ref-for-dictdef-sensoroptions">SensorOptions</a>  {
+<span class="kt">dictionary</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="dictionary" data-export="" id="dictdef-gyroscopesensoroptions"><code>GyroscopeSensorOptions</code></dfn> : <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#dictdef-sensoroptions" id="ref-for-dictdef-sensoroptions">SensorOptions</a> {
   <a class="n" data-link-type="idl-name" href="#enumdef-gyroscopelocalcoordinatesystem" id="ref-for-enumdef-gyroscopelocalcoordinatesystem">GyroscopeLocalCoordinateSystem</a> <dfn class="nv dfn-paneled idl-code" data-default="&quot;device&quot;" data-dfn-for="GyroscopeSensorOptions" data-dfn-type="dict-member" data-export="" data-type="GyroscopeLocalCoordinateSystem " id="dom-gyroscopesensoroptions-referenceframe"><code>referenceFrame</code></dfn> = "device";
 };
 </pre>
@@ -1771,7 +1772,7 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
 
 <span class="kt">enum</span> <a class="nv" href="#enumdef-gyroscopelocalcoordinatesystem"><code>GyroscopeLocalCoordinateSystem</code></a> { <a class="s" href="#dom-gyroscopelocalcoordinatesystem-device"><code>"device"</code></a>, <a class="s" href="#dom-gyroscopelocalcoordinatesystem-screen"><code>"screen"</code></a> };
 
-<span class="kt">dictionary</span> <a class="nv" href="#dictdef-gyroscopesensoroptions"><code>GyroscopeSensorOptions</code></a> : <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#dictdef-sensoroptions" id="ref-for-dictdef-sensoroptions①">SensorOptions</a>  {
+<span class="kt">dictionary</span> <a class="nv" href="#dictdef-gyroscopesensoroptions"><code>GyroscopeSensorOptions</code></a> : <a class="n" data-link-type="idl-name" href="https://w3c.github.io/sensors/#dictdef-sensoroptions" id="ref-for-dictdef-sensoroptions①">SensorOptions</a> {
   <a class="n" data-link-type="idl-name" href="#enumdef-gyroscopelocalcoordinatesystem" id="ref-for-enumdef-gyroscopelocalcoordinatesystem①">GyroscopeLocalCoordinateSystem</a> <a class="nv" data-default="&quot;device&quot;" data-type="GyroscopeLocalCoordinateSystem " href="#dom-gyroscopesensoroptions-referenceframe"><code>referenceFrame</code></a> = "device";
 };
 
