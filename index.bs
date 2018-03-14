@@ -23,14 +23,14 @@ Boilerplate: omit issues-index, omit conformance
 Default Biblio Status: current
 </pre>
 <pre class="anchors">
-urlPrefix: https://w3c.github.io/sensors; spec: GENERIC-SENSOR
+urlPrefix: https://w3c.github.io/sensors/; spec: GENERIC-SENSOR
   type: dfn
     text: high-level
     text: latest reading
     text: default sensor
     text: sensor type
     text: local coordinate system
-    text: sensor readings
+    text: sensor reading
     text: sensor permission name; url: sensor-permission-names
     text: location tracking; url: location-tracking
     text: keylogging; url: keystroke-monitoring
@@ -39,7 +39,7 @@ urlPrefix: https://w3c.github.io/sensors; spec: GENERIC-SENSOR
     text: eavesdropping; url: eavesdropping
     text: generic mitigations; url: mitigation-strategies
     text: supported sensor options
-urlPrefix: https://w3c.github.io/accelerometer; spec: ACCELEROMETER
+urlPrefix: https://w3c.github.io/accelerometer/; spec: ACCELEROMETER
   type: dfn
     text: device coordinate system
     text: screen coordinate system
