@@ -38,6 +38,7 @@ urlPrefix: https://w3c.github.io/sensors; spec: GENERIC-SENSOR
     text: user identifying; url: user-identifying
     text: eavesdropping; url: eavesdropping
     text: generic mitigations; url: mitigation-strategies
+    text: supported sensor options
 urlPrefix: https://w3c.github.io/accelerometer; spec: ACCELEROMETER
   type: dfn
     text: device coordinate system
@@ -173,6 +174,9 @@ The Gyroscope Interface {#gyroscope-interface}
 
 To construct a {{Gyroscope}} object the user agent must invoke
 the [=construct a gyroscope object=] abstract operation.
+
+[=Supported sensor options=] for {{Gyroscope}} are
+"frequency" and "referenceFrame".
 
 ### Gyroscope.x ### {#gyroscope-x}
 
