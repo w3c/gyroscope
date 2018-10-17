@@ -1,5 +1,9 @@
- {
-    "group":      ["43696"]
-,   "contacts":   ["dontcallmedom"]
-,   "shortName":  "gyroscope"
+{
+  "group": 43696,
+  "contacts": [
+    "xfq"
+  ],
+  "shortName": "gyroscope",
+  "repo-type": "rec-track",
+  "policy": "open"
 }
