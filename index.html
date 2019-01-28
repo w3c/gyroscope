@@ -1221,7 +1221,7 @@ Possible extra rowspan handling
   </style>
   <meta content="Bikeshed version 9c6ae748322940994300e90a77c34437364b40a6" name="generator">
   <link href="http://www.w3.org/TR/gyroscope/" rel="canonical">
-  <meta content="4dcb9a5402841bae669d0a30c3fceb5a93befe4d" name="document-revision">
+  <meta content="8b69d5b5c757bde6a717c9c02c919f87b5bef07d" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1700,7 +1700,7 @@ In other words, this attribute returns the result of invoking <a data-link-type=
     This section extends the <a data-link-type="dfn" href="https://w3c.github.io/sensors/#automation" id="ref-for-automation">automation</a> section defined in the Generic Sensor API <a data-link-type="biblio" href="#biblio-generic-sensor">[GENERIC-SENSOR]</a> to provide mocking information about the rate of rotation around the device’s local three primary axes
 for the purposes of testing a user agent’s implementation of <code class="idl"><a data-link-type="idl" href="#gyroscope" id="ref-for-gyroscope⑨">Gyroscope</a></code> API. 
    <h3 class="heading settled" data-level="8.1" id="mock-gyroscope-type"><span class="secno">8.1. </span><span class="content">Mock Sensor Type</span><a class="self-link" href="#mock-gyroscope-type"></a></h3>
-   <p>The <code class="idl"><a data-link-type="idl" href="#gyroscope" id="ref-for-gyroscope①⓪">Gyroscope</a></code> class has an associated <a data-link-type="dfn" href="https://w3c.github.io/sensors/#mock-sensor-type" id="ref-for-mock-sensor-type">mock sensor type</a> which is <a class="idl-code" data-link-type="enum-value">"gyroscope"</a>, its <a data-link-type="dfn" href="https://w3c.github.io/sensors/#mock-sensor-reading-values" id="ref-for-mock-sensor-reading-values">mock sensor reading values</a> dictionary is defined as follow:</p>
+   <p>The <code class="idl"><a data-link-type="idl" href="#gyroscope" id="ref-for-gyroscope①⓪">Gyroscope</a></code> class has an associated <a data-link-type="dfn" href="https://w3c.github.io/sensors/#mock-sensor-type" id="ref-for-mock-sensor-type">mock sensor type</a> which is <a class="idl-code" data-link-type="enum-value">"gyroscope"</a>, its <a data-link-type="dfn" href="https://w3c.github.io/sensors/#mock-sensor-reading-values" id="ref-for-mock-sensor-reading-values">mock sensor reading values</a> dictionary is defined as follows:</p>
 <pre class="idl highlight def"><c- b>dictionary</c-> <dfn class="idl-code" data-dfn-type="dictionary" data-export id="dictdef-gyroscopereadingvalues"><code><c- g>GyroscopeReadingValues</c-></code><a class="self-link" href="#dictdef-gyroscopereadingvalues"></a></dfn> {
   <c- b>required</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double③"><c- b>double</c-></a>? <dfn class="idl-code" data-dfn-for="GyroscopeReadingValues" data-dfn-type="dict-member" data-export data-type="double? " id="dom-gyroscopereadingvalues-x"><code><c- g>x</c-></code><a class="self-link" href="#dom-gyroscopereadingvalues-x"></a></dfn>;
   <c- b>required</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-double" id="ref-for-idl-double④"><c- b>double</c-></a>? <dfn class="idl-code" data-dfn-for="GyroscopeReadingValues" data-dfn-type="dict-member" data-export data-type="double? " id="dom-gyroscopereadingvalues-y"><code><c- g>y</c-></code><a class="self-link" href="#dom-gyroscopereadingvalues-y"></a></dfn>;
