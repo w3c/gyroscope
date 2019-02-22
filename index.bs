@@ -7,7 +7,7 @@ Shortname: gyroscope
 TR: http://www.w3.org/TR/gyroscope/
 Previous Version: https://www.w3.org/TR/2018/CR-gyroscope-20180320/
 Editor: Anssi Kostiainen 41974, Intel Corporation, http://intel.com/
-Editor: Mikhail Pozdnyakov 78325, Intel Corporation, http://intel.com/
+Former Editor: Mikhail Pozdnyakov 78325, Intel Corporation, http://intel.com/
 Group: dap
 Abstract:
   This specification defines a concrete sensor interface to monitor
