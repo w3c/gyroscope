@@ -161,8 +161,9 @@ The Gyroscope Interface {#gyroscope-interface}
 ------------------------
 
 <pre class="idl">
-  [Constructor(optional GyroscopeSensorOptions sensorOptions = {}), SecureContext, Exposed=Window]
+  [SecureContext, Exposed=Window]
   interface Gyroscope : Sensor {
+    constructor(optional GyroscopeSensorOptions sensorOptions = {});
     readonly attribute double? x;
     readonly attribute double? y;
     readonly attribute double? z;
