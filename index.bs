@@ -12,7 +12,7 @@ Group: dap
 Abstract:
   This specification defines a concrete sensor interface to monitor
   the rate of rotation around the device's local three primary axes.
-Version History: https://github.com/w3c/gyroscope/commits/gh-pages/index.bs
+Version History: https://github.com/w3c/gyroscope/commits/master/index.bs
 !Bug Reports: <a href="https://www.github.com/w3c/gyroscope/issues/new">via the w3c/gyroscope repository on GitHub</a>
 Indent: 2
 Repository: w3c/gyroscope
