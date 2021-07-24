@@ -5,7 +5,6 @@ Level: none
 ED: https://w3c.github.io/gyroscope/
 Shortname: gyroscope
 TR: https://www.w3.org/TR/gyroscope/
-Previous Version: https://www.w3.org/TR/2019/WD-gyroscope-20190307/
 Editor: Anssi Kostiainen 41974, Intel Corporation, http://intel.com/
 Former Editor: Mikhail Pozdnyakov 78325, Intel Corporation, http://intel.com/
 Group: dap
@@ -13,13 +12,15 @@ Abstract:
   This specification defines a concrete sensor interface to monitor
   the rate of rotation around the device's local three primary axes.
 Version History: https://github.com/w3c/gyroscope/commits/main/index.bs
-!Bug Reports: <a href="https://www.github.com/w3c/gyroscope/issues/new">via the w3c/gyroscope repository on GitHub</a>
+Issue Tracking: Gyroscope Issues Repository https://github.com/w3c/gyroscope/issues
 Indent: 2
 Repository: w3c/gyroscope
 Markup Shorthands: markdown on
 Inline Github Issues: true
 !Test Suite: <a href="https://github.com/web-platform-tests/wpt/tree/main/gyroscope">web-platform-tests on GitHub</a>
-Boilerplate: omit issues-index, omit conformance
+Boilerplate: omit issues-index, omit conformance, repository-issue-tracking no
+Include MDN Panels: if possible
+Implementation Report: https://www.w3.org/wiki/DAS/Implementations
 Default Biblio Status: current
 </pre>
 <pre class="anchors">
