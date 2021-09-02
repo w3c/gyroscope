@@ -132,6 +132,8 @@ The <a>Gyroscope</a> has a <a>default sensor</a>, which is the device's main gyr
 
 The <a>Gyroscope</a> has an associated [=sensor permission name=] which is <a for="PermissionName" enum-value>"gyroscope"</a>.
 
+The <a>Gyroscope</a> is a [=policy-controlled feature=] identified by the string "gyroscope". Its [=default allowlist=] is `'self'`.
+
 A [=latest reading=] of a {{Sensor}} of <a>Gyroscope</a> <a>sensor type</a> includes three [=map/entries=]
 whose [=map/keys=] are "x", "y", "z" and whose [=map/values=] contain current <a>angular
 velocity</a> about the corresponding axes.
