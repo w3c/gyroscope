@@ -22,6 +22,7 @@ Boilerplate: omit issues-index, omit conformance, repository-issue-tracking no
 Include MDN Panels: if possible
 Implementation Report: https://www.w3.org/wiki/DAS/Implementations
 Default Biblio Status: current
+Status Text: This document is maintained and updated at any time. Some parts of this document are work in progress.
 </pre>
 <pre class="anchors">
 urlPrefix: https://w3c.github.io/sensors/; spec: GENERIC-SENSOR
