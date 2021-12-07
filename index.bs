@@ -48,9 +48,6 @@ urlPrefix: https://w3c.github.io/accelerometer/; spec: ACCELEROMETER
   type: dfn
     text: device coordinate system
     text: screen coordinate system
-urlPrefix: https://www.w3.org/TR/permissions/; spec: PERMISSIONS
-  type: dfn
-    text: name; url: dfn-name
 </pre>
 
 <pre class=biblio>
@@ -135,7 +132,7 @@ The <dfn id="gyroscope-sensor-type">Gyroscope</dfn> <a>sensor type</a>'s associa
 The <a>Gyroscope</a> has a <a>default sensor</a>, which is the device's main gyroscope sensor.
 
 The <a>Gyroscope</a> is a [=powerful feature=] that is identified by the
-[=name=] "gyroscope", which is also its associated
+[=powerful feature/name=] "gyroscope", which is also its associated
 [=sensor permission name=]. Its [=powerful feature/permission revocation algorithm=] is the
 result of calling the [=generic sensor permission revocation algorithm=] with
 "gyroscope".
