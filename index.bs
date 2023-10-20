@@ -238,6 +238,7 @@ Abstract Operations {#abstract-operations}
 
 Automation {#automation}
 ==========
+
 This section extends [[GENERIC-SENSOR#automation]] by providing [=Gyroscope=]-specific virtual sensor metadata.
 
 The [=per-type virtual sensor metadata=] [=map=] must have the following [=map/entry=]:
