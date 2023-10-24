@@ -120,20 +120,26 @@ inertial sensors are in use and/or require explicit user consent to access [=sen
 These mitigation strategies complement the [=generic mitigations=] defined
 in the Generic Sensor API [[!GENERIC-SENSOR]].
 
+Permissions Policy integration {#permissions-policy-integration}
+==============================
+
+This specification defines a [=policy-controlled feature=] identified by the string "<code><dfn data-lt="gyroscope-feature" export>gyroscope</dfn></code>". Its [=default allowlist=] is "`self`".
+
 Model {#model}
 =====
 
-The <dfn id="gyroscope-sensor-type">Gyroscope</dfn> <a>sensor type</a>'s associated {{Sensor}} subclass is the {{Gyroscope}} class.
+The <dfn id="gyroscope-sensor-type">Gyroscope</dfn> <a>sensor type</a> has the following associated data:
 
-The <a>Gyroscope</a> has a <a>default sensor</a>, which is the device's main gyroscope sensor.
-
-The <a>Gyroscope</a> is a [=powerful feature=] that is identified by the
-[=powerful feature/name=] "gyroscope", which is also its associated
-[=sensor permission name=]. Its [=powerful feature/permission revocation algorithm=] is the
-result of calling the [=generic sensor permission revocation algorithm=] with
-"gyroscope".
-
-The <a>Gyroscope</a> is a [=policy-controlled feature=] identified by the string "gyroscope". Its [=default allowlist=] is `'self'`.
+ : [=Extension sensor interface=]
+ :: {{Gyroscope}}
+ : [=Sensor permission names=]
+ :: "<code><dfn permission export>gyroscope</dfn></code>"
+ : [=Sensor feature names=]
+ :: "[=gyroscope-feature|gyroscope=]"
+ : [=powerful feature/Permission revocation algorithm=]
+ :: Invoke the [=generic sensor permission revocation algorithm=] with "<code><a permission>gyroscope</a></code>".
+ : [=Default sensor=]
+ :: The device's main gyroscope sensor.
 
 A [=latest reading=] of a {{Sensor}} of <a>Gyroscope</a> <a>sensor type</a> includes three [=map/entries=]
 whose [=map/keys=] are "x", "y", "z" and whose [=map/values=] contain current <a>angular
