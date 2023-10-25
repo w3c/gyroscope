@@ -179,8 +179,9 @@ The Gyroscope Interface {#gyroscope-interface}
   };
 </pre>
 
-To construct a {{Gyroscope}} object the user agent must invoke
-the [=construct a gyroscope object=] abstract operation.
+<div algorithm>
+The <dfn constructor for="Gyroscope" lt="Gyroscope(sensorOptions)"><code>new Gyroscope(|sensorOptions|)</code></dfn> constructor steps are to invoke the [=construct a gyroscope object=] abstract operation with [=this=] and |sensorOptions|.
+</div>
 
 [=Supported sensor options=] for {{Gyroscope}} are
 "frequency" and "referenceFrame".
@@ -217,22 +218,17 @@ Abstract Operations {#abstract-operations}
 <div algorithm="construct a gyroscope object">
 
     : input
+    :: |object|, a {{Gyroscope}} object.
     :: |options|, a {{GyroscopeSensorOptions}} object.
-    : output
-    :: A {{Gyroscope}} object.
 
     1.  Let |allowed| be the result of invoking [=check sensor policy-controlled features=]
-        with <a>Gyroscope</a>.
+        with |object|'s [=sensor type=].
     1.  If |allowed| is false, then:
         1.  [=Throw=] a {{SecurityError}} {{DOMException}}.
-    1.  Let |gyroscope| be the new {{Gyroscope}} object.
-    1.  Invoke [=initialize a sensor object=] with |gyroscope| and |options|.
+    1.  Invoke [=initialize a sensor object=] with |object| and |options|.
     1.  If |options|.{{referenceFrame!!dict-member}} is "screen", then:
-        1.  Define [=local coordinate system=] for |gyroscope|
-            as the [=screen coordinate system=].
-    1.  Otherwise, define [=local coordinate system=] for |gyroscope|
-        as the [=device coordinate system=].
-    1.  Return |gyroscope|.
+        1.  Set |object|'s [=local coordinate system=] to the [=screen coordinate system=].
+    1.  Otherwise, define |object|'s [=local coordinate system=] to the [=device coordinate system=].
 </div>
 
 Automation {#automation}
