@@ -7,7 +7,7 @@
   <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
   <meta content="Bikeshed version 82ce88815, updated Thu Sep 7 16:33:55 2023 -0700" name="generator">
   <link href="https://www.w3.org/TR/gyroscope/" rel="canonical">
-  <meta content="153424cee821528fb026b18f8e3cb9481ae95f43" name="document-revision">
+  <meta content="ccb15d7e32e6b030f81d695f802fedb4f503f212" name="document-revision">
 <style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
     color: var(--a-normal-text);
@@ -889,7 +889,7 @@ var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Gyroscope</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2023-10-25">25 October 2023</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2023-12-07">7 December 2023</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -915,7 +915,7 @@ var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
     </div>
    </details>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2023 <a href="https://www.w3.org/">World Wide Web Consortium</a>. <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup> <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/copyright-software" rel="license" title="W3C Software and Document License">permissive document license</a> rules apply. </p>
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2023 <a href="https://www.w3.org/">World Wide Web Consortium</a>. <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup> <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/policies/#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/copyright/software-license/" rel="license" title="W3C Software and Document License">permissive document license</a> rules apply. </p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
@@ -942,7 +942,7 @@ var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
 	W3C maintains a <a href="https://www.w3.org/groups/wg/das/ipr" rel="disclosure">public list of any patent disclosures</a> made in connection with the deliverables of the group;
 	that page also includes instructions for disclosing a patent.
 	An individual who has actual knowledge of a patent which the individual believes contains <a href="https://www.w3.org/Consortium/Patent-Policy-20200915/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy-20200915/#sec-Disclosure">section 6 of the W3C Patent Policy</a>. </p>
-   <p> This document is governed by the <a href="https://www.w3.org/2023/Process-20230612/" id="w3c_process_revision">12 June 2023 W3C Process Document</a>. </p>
+   <p> This document is governed by the <a href="https://www.w3.org/2023/Process-20231103/" id="w3c_process_revision">03 November 2023 W3C Process Document</a>. </p>
    <p></p>
    <p>This document is maintained and updated at any time. Some parts of this document are work in progress.</p>
   </div>
@@ -1045,6 +1045,9 @@ in the Generic Sensor API <a data-link-type="biblio" href="#biblio-generic-senso
     <dt data-md><a data-link-type="dfn" href="https://w3c.github.io/sensors/#default-sensor" id="ref-for-default-sensor">Default sensor</a>
     <dd data-md>
      <p>The device’s main gyroscope sensor.</p>
+    <dt data-md><a data-link-type="dfn" href="https://w3c.github.io/sensors/#virtual-sensor-type" id="ref-for-virtual-sensor-type">Virtual sensor type</a>
+    <dd data-md>
+     <p>"<code><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="gyroscope virtual sensor type" data-noexport id="gyroscope-virtual-sensor-type">gyroscope</dfn></code>"</p>
    </dl>
    <p>A <a data-link-type="dfn" href="https://w3c.github.io/sensors/#latest-reading" id="ref-for-latest-reading">latest reading</a> of a <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/sensors/#sensor" id="ref-for-sensor">Sensor</a></code> of <a data-link-type="dfn" href="#gyroscope-sensor-type" id="ref-for-gyroscope-sensor-type">Gyroscope</a> <a data-link-type="dfn" href="https://w3c.github.io/sensors/#sensor-type" id="ref-for-sensor-type①">sensor type</a> includes three <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry" id="ref-for-map-entry">entries</a> whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-getting-the-keys" id="ref-for-map-getting-the-keys">keys</a> are "x", "y", "z" and whose <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-getting-the-values" id="ref-for-map-getting-the-values">values</a> contain current <a data-link-type="dfn" href="#angular-velocity" id="ref-for-angular-velocity">angular
 velocity</a> about the corresponding axes.</p>
@@ -1123,10 +1126,10 @@ In other words, this attribute returns the result of invoking <a data-link-type=
    <dl>
     <dt data-md><a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-key" id="ref-for-map-key">key</a>
     <dd data-md>
-     <p>"<code>gyroscope</code>"</p>
+     <p>"<code><a data-link-type="dfn" href="#gyroscope-virtual-sensor-type" id="ref-for-gyroscope-virtual-sensor-type">gyroscope</a></code>"</p>
     <dt data-md><a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-value" id="ref-for-map-value">value</a>
     <dd data-md>
-     <p>A <a data-link-type="dfn" href="https://w3c.github.io/sensors/#virtual-sensor-metadata" id="ref-for-virtual-sensor-metadata">virtual sensor metadata</a> whose <a data-link-type="dfn" href="https://w3c.github.io/sensors/#virtual-sensor-metadata-virtual-sensor-type" id="ref-for-virtual-sensor-metadata-virtual-sensor-type">virtual sensor type</a> is <a data-link-type="dfn" href="#gyroscope-sensor-type" id="ref-for-gyroscope-sensor-type②">Gyroscope</a> and <a data-link-type="dfn" href="https://w3c.github.io/sensors/#virtual-sensor-metadata-reading-parsing-algorithm" id="ref-for-virtual-sensor-metadata-reading-parsing-algorithm">reading parsing algorithm</a> is <a data-link-type="dfn" href="https://w3c.github.io/sensors/#parse-xyz-reading" id="ref-for-parse-xyz-reading">parse xyz reading</a>.</p>
+     <p>A <a data-link-type="dfn" href="https://w3c.github.io/sensors/#virtual-sensor-metadata" id="ref-for-virtual-sensor-metadata">virtual sensor metadata</a> whose <a data-link-type="dfn" href="https://w3c.github.io/sensors/#virtual-sensor-metadata-reading-parsing-algorithm" id="ref-for-virtual-sensor-metadata-reading-parsing-algorithm">reading parsing algorithm</a> is <a data-link-type="dfn" href="https://w3c.github.io/sensors/#parse-xyz-reading" id="ref-for-parse-xyz-reading">parse xyz reading</a>.</p>
    </dl>
    <h2 class="heading settled" data-level="10" id="acknowledgements"><span class="secno">10. </span><span class="content">Acknowledgements</span><a class="self-link" href="#acknowledgements"></a></h2>
    <p>Tobie Langel for the work on Generic Sensor API.</p>
@@ -1167,6 +1170,7 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
    <li><a href="#enumdef-gyroscopelocalcoordinatesystem">GyroscopeLocalCoordinateSystem</a><span>, in § 7.1</span>
    <li><a href="#dom-gyroscope-gyroscope">Gyroscope(sensorOptions)</a><span>, in § 7.1</span>
    <li><a href="#dictdef-gyroscopesensoroptions">GyroscopeSensorOptions</a><span>, in § 7.1</span>
+   <li><a href="#gyroscope-virtual-sensor-type">gyroscope virtual sensor type</a><span>, in § 6</span>
    <li><a href="#dom-gyroscopesensoroptions-referenceframe">referenceFrame</a><span>, in § 7.1</span>
    <li><a href="#dom-gyroscopelocalcoordinatesystem-screen">"screen"</a><span>, in § 7.1</span>
    <li><a href="#dom-gyroscope-x">x</a><span>, in § 7.1</span>
@@ -1209,7 +1213,7 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
      <li><span class="dfn-paneled" id="13f5be19">supported sensor options</span>
      <li><span class="dfn-paneled" id="eed9938b">user identifying</span>
      <li><span class="dfn-paneled" id="bb15fee5">virtual sensor metadata</span>
-     <li><span class="dfn-paneled" id="d5e5825c">virtual sensor type</span>
+     <li><span class="dfn-paneled" id="4fa114dd">virtual sensor type</span>
     </ul>
    <li>
     <a data-link-type="biblio">[INFRA]</a> defines the following terms:
@@ -1718,7 +1722,7 @@ window.dfnpanelData['f96b75e9'] = {"dfnID": "f96b75e9", "url": "https://w3c.gith
 window.dfnpanelData['13f5be19'] = {"dfnID": "13f5be19", "url": "https://w3c.github.io/sensors/#supported-sensor-options", "dfnText": "supported sensor options", "refSections": [{"refs": [{"id": "ref-for-supported-sensor-options"}], "title": "7.1. The Gyroscope Interface"}], "external": true};
 window.dfnpanelData['eed9938b'] = {"dfnID": "eed9938b", "url": "https://w3c.github.io/sensors/#user-identifying", "dfnText": "user identifying", "refSections": [{"refs": [{"id": "ref-for-user-identifying"}], "title": "4. Security and Privacy Considerations"}], "external": true};
 window.dfnpanelData['bb15fee5'] = {"dfnID": "bb15fee5", "url": "https://w3c.github.io/sensors/#virtual-sensor-metadata", "dfnText": "virtual sensor metadata", "refSections": [{"refs": [{"id": "ref-for-virtual-sensor-metadata"}], "title": "9. Automation"}], "external": true};
-window.dfnpanelData['d5e5825c'] = {"dfnID": "d5e5825c", "url": "https://w3c.github.io/sensors/#virtual-sensor-metadata-virtual-sensor-type", "dfnText": "virtual sensor type", "refSections": [{"refs": [{"id": "ref-for-virtual-sensor-metadata-virtual-sensor-type"}], "title": "9. Automation"}], "external": true};
+window.dfnpanelData['4fa114dd'] = {"dfnID": "4fa114dd", "url": "https://w3c.github.io/sensors/#virtual-sensor-type", "dfnText": "virtual sensor type", "refSections": [{"refs": [{"id": "ref-for-virtual-sensor-type"}], "title": "6. Model"}], "external": true};
 window.dfnpanelData['8958b003'] = {"dfnID": "8958b003", "url": "https://infra.spec.whatwg.org/#map-entry", "dfnText": "entry", "refSections": [{"refs": [{"id": "ref-for-map-entry"}], "title": "6. Model"}, {"refs": [{"id": "ref-for-map-entry\u2460"}], "title": "9. Automation"}], "external": true};
 window.dfnpanelData['d14a6f26'] = {"dfnID": "d14a6f26", "url": "https://infra.spec.whatwg.org/#map-key", "dfnText": "key", "refSections": [{"refs": [{"id": "ref-for-map-key"}], "title": "9. Automation"}], "external": true};
 window.dfnpanelData['31db57e6'] = {"dfnID": "31db57e6", "url": "https://infra.spec.whatwg.org/#map-getting-the-keys", "dfnText": "keys", "refSections": [{"refs": [{"id": "ref-for-map-getting-the-keys"}], "title": "6. Model"}], "external": true};
@@ -1736,8 +1740,9 @@ window.dfnpanelData['8c800cdf'] = {"dfnID": "8c800cdf", "url": "https://webidl.s
 window.dfnpanelData['4013a022'] = {"dfnID": "4013a022", "url": "https://webidl.spec.whatwg.org/#this", "dfnText": "this", "refSections": [{"refs": [{"id": "ref-for-this"}], "title": "7.1. The Gyroscope Interface"}], "external": true};
 window.dfnpanelData['b4cfa5ce'] = {"dfnID": "b4cfa5ce", "url": "https://webidl.spec.whatwg.org/#dfn-throw", "dfnText": "throw", "refSections": [{"refs": [{"id": "ref-for-dfn-throw"}], "title": "8.1. Construct a Gyroscope object"}], "external": true};
 window.dfnpanelData['gyroscope-feature'] = {"dfnID": "gyroscope-feature", "url": "#gyroscope-feature", "dfnText": "gyroscope", "refSections": [{"refs": [{"id": "ref-for-gyroscope-feature"}], "title": "6. Model"}], "external": false};
-window.dfnpanelData['gyroscope-sensor-type'] = {"dfnID": "gyroscope-sensor-type", "url": "#gyroscope-sensor-type", "dfnText": "Gyroscope", "refSections": [{"refs": [{"id": "ref-for-gyroscope-sensor-type"}], "title": "6. Model"}, {"refs": [{"id": "ref-for-gyroscope-sensor-type\u2460"}, {"id": "ref-for-gyroscope-sensor-type\u2461"}], "title": "9. Automation"}], "external": false};
+window.dfnpanelData['gyroscope-sensor-type'] = {"dfnID": "gyroscope-sensor-type", "url": "#gyroscope-sensor-type", "dfnText": "Gyroscope", "refSections": [{"refs": [{"id": "ref-for-gyroscope-sensor-type"}], "title": "6. Model"}, {"refs": [{"id": "ref-for-gyroscope-sensor-type\u2460"}], "title": "9. Automation"}], "external": false};
 window.dfnpanelData['permissiondef-gyroscope'] = {"dfnID": "permissiondef-gyroscope", "url": "#permissiondef-gyroscope", "dfnText": "gyroscope", "refSections": [{"refs": [{"id": "ref-for-permissiondef-gyroscope"}], "title": "6. Model"}], "external": false};
+window.dfnpanelData['gyroscope-virtual-sensor-type'] = {"dfnID": "gyroscope-virtual-sensor-type", "url": "#gyroscope-virtual-sensor-type", "dfnText": "gyroscope", "refSections": [{"refs": [{"id": "ref-for-gyroscope-virtual-sensor-type"}], "title": "9. Automation"}], "external": false};
 window.dfnpanelData['angular-velocity'] = {"dfnID": "angular-velocity", "url": "#angular-velocity", "dfnText": "angular velocity", "refSections": [{"refs": [{"id": "ref-for-angular-velocity"}, {"id": "ref-for-angular-velocity\u2460"}], "title": "6. Model"}, {"refs": [{"id": "ref-for-angular-velocity\u2461"}], "title": "7.1.1. Gyroscope.x"}, {"refs": [{"id": "ref-for-angular-velocity\u2462"}], "title": "7.1.2. Gyroscope.y"}, {"refs": [{"id": "ref-for-angular-velocity\u2463"}], "title": "7.1.3. Gyroscope.z"}], "external": false};
 window.dfnpanelData['gyroscope'] = {"dfnID": "gyroscope", "url": "#gyroscope", "dfnText": "Gyroscope", "refSections": [{"refs": [{"id": "ref-for-gyroscope"}], "title": "6. Model"}, {"refs": [{"id": "ref-for-gyroscope\u2460"}], "title": "6.1. Reference Frame"}, {"refs": [{"id": "ref-for-gyroscope\u2461"}], "title": "7.1. The Gyroscope Interface"}, {"refs": [{"id": "ref-for-gyroscope\u2462"}], "title": "7.1.1. Gyroscope.x"}, {"refs": [{"id": "ref-for-gyroscope\u2463"}], "title": "7.1.2. Gyroscope.y"}, {"refs": [{"id": "ref-for-gyroscope\u2464"}], "title": "7.1.3. Gyroscope.z"}, {"refs": [{"id": "ref-for-gyroscope\u2465"}], "title": "8.1. Construct a Gyroscope object"}], "external": false};
 window.dfnpanelData['dom-gyroscope-x'] = {"dfnID": "dom-gyroscope-x", "url": "#dom-gyroscope-x", "dfnText": "x", "refSections": [{"refs": [{"id": "ref-for-dom-gyroscope-x"}], "title": "7.1.1. Gyroscope.x"}], "external": false};
