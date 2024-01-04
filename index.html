@@ -7,7 +7,7 @@
   <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
   <meta content="Bikeshed version 82ce88815, updated Thu Sep 7 16:33:55 2023 -0700" name="generator">
   <link href="https://www.w3.org/TR/gyroscope/" rel="canonical">
-  <meta content="ccb15d7e32e6b030f81d695f802fedb4f503f212" name="document-revision">
+  <meta content="f458dcb7e27e90c33ac6e4b9081f2adc0af534b5" name="document-revision">
 <style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
     color: var(--a-normal-text);
@@ -889,7 +889,7 @@ var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Gyroscope</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2023-12-07">7 December 2023</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2024-01-04">4 January 2024</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -915,7 +915,7 @@ var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
     </div>
    </details>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2023 <a href="https://www.w3.org/">World Wide Web Consortium</a>. <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup> <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/policies/#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/copyright/software-license/" rel="license" title="W3C Software and Document License">permissive document license</a> rules apply. </p>
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2024 <a href="https://www.w3.org/">World Wide Web Consortium</a>. <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup> <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/policies/#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/copyright/software-license/" rel="license" title="W3C Software and Document License">permissive document license</a> rules apply. </p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
@@ -1026,7 +1026,7 @@ inertial sensors are in use and/or require explicit user consent to access <a da
 These mitigation strategies complement the <a data-link-type="dfn" href="https://w3c.github.io/sensors/#mitigation-strategies" id="ref-for-mitigation-strategies">generic mitigations</a> defined
 in the Generic Sensor API <a data-link-type="biblio" href="#biblio-generic-sensor" title="Generic Sensor API">[GENERIC-SENSOR]</a>.</p>
    <h2 class="heading settled" data-level="5" id="permissions-policy-integration"><span class="secno">5. </span><span class="content">Permissions Policy integration</span><a class="self-link" href="#permissions-policy-integration"></a></h2>
-   <p>This specification defines a <a data-link-type="dfn" href="https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature" id="ref-for-policy-controlled-feature">policy-controlled feature</a> identified by the string "<code><dfn class="dfn-paneled" data-dfn-type="dfn" data-export data-lt="gyroscope-feature" id="gyroscope-feature">gyroscope</dfn></code>". Its <a data-link-type="dfn" href="https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature-default-allowlist" id="ref-for-policy-controlled-feature-default-allowlist">default allowlist</a> is "<code>self</code>".</p>
+   <p>This specification utilizes the <a data-link-type="dfn" href="https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature" id="ref-for-policy-controlled-feature">policy-controlled feature</a> identified by the string "<code><a data-link-type="dfn" href="https://w3c.github.io/deviceorientation/#gyroscope-feature" id="ref-for-gyroscope-feature">gyroscope</a></code>" defined in <a data-link-type="biblio" href="#biblio-device-orientation" title="DeviceOrientation Event Specification">[DEVICE-ORIENTATION]</a>.</p>
    <h2 class="heading settled" data-level="6" id="model"><span class="secno">6. </span><span class="content">Model</span><a class="self-link" href="#model"></a></h2>
    <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="gyroscope-sensor-type">Gyroscope</dfn> <a data-link-type="dfn" href="https://w3c.github.io/sensors/#sensor-type" id="ref-for-sensor-type">sensor type</a> has the following associated data:</p>
    <dl>
@@ -1035,13 +1035,13 @@ in the Generic Sensor API <a data-link-type="biblio" href="#biblio-generic-senso
      <p><code class="idl"><a data-link-type="idl" href="#gyroscope" id="ref-for-gyroscope">Gyroscope</a></code></p>
     <dt data-md><a data-link-type="dfn" href="https://w3c.github.io/sensors/#sensor-permission-names" id="ref-for-sensor-permission-names">Sensor permission names</a>
     <dd data-md>
-     <p>"<code><dfn class="dfn-paneled idl-code" data-dfn-type="permission" data-export id="permissiondef-gyroscope"><code>gyroscope</code></dfn></code>"</p>
+     <p>"<code><a class="idl-code" data-link-type="permission" href="https://w3c.github.io/deviceorientation/#permissiondef-gyroscope" id="ref-for-permissiondef-gyroscope">gyroscope</a></code>" (defined in <a data-link-type="biblio" href="#biblio-device-orientation" title="DeviceOrientation Event Specification">[DEVICE-ORIENTATION]</a>)</p>
     <dt data-md><a data-link-type="dfn" href="https://w3c.github.io/sensors/#sensor-feature-names" id="ref-for-sensor-feature-names">Sensor feature names</a>
     <dd data-md>
-     <p>"<a data-link-type="dfn" href="#gyroscope-feature" id="ref-for-gyroscope-feature">gyroscope</a>"</p>
+     <p>"<a data-link-type="dfn" href="https://w3c.github.io/deviceorientation/#gyroscope-feature" id="ref-for-gyroscope-feature①">gyroscope</a>" (defined in <a data-link-type="biblio" href="#biblio-device-orientation" title="DeviceOrientation Event Specification">[DEVICE-ORIENTATION]</a>)</p>
     <dt data-md><a data-link-type="dfn" href="https://w3c.github.io/permissions/#dfn-permission-revocation-algorithm" id="ref-for-dfn-permission-revocation-algorithm">Permission revocation algorithm</a>
     <dd data-md>
-     <p>Invoke the <a data-link-type="dfn" href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm" id="ref-for-generic-sensor-permission-revocation-algorithm">generic sensor permission revocation algorithm</a> with "<code><a class="idl-code" data-link-type="permission" href="#permissiondef-gyroscope" id="ref-for-permissiondef-gyroscope">gyroscope</a></code>".</p>
+     <p>Invoke the <a data-link-type="dfn" href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm" id="ref-for-generic-sensor-permission-revocation-algorithm">generic sensor permission revocation algorithm</a> with "<code><a class="idl-code" data-link-type="permission" href="https://w3c.github.io/deviceorientation/#permissiondef-gyroscope" id="ref-for-permissiondef-gyroscope①">gyroscope</a></code>".</p>
     <dt data-md><a data-link-type="dfn" href="https://w3c.github.io/sensors/#default-sensor" id="ref-for-default-sensor">Default sensor</a>
     <dd data-md>
      <p>The device’s main gyroscope sensor.</p>
@@ -1164,9 +1164,7 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
      <li><a href="#gyroscope">(interface)</a><span>, in § 7.1</span>
      <li><a href="#gyroscope-sensor-type">definition of</a><span>, in § 6</span>
     </ul>
-   <li><a href="#permissiondef-gyroscope">gyroscope</a><span>, in § 6</span>
    <li><a href="#dom-gyroscope-gyroscope">Gyroscope()</a><span>, in § 7.1</span>
-   <li><a href="#gyroscope-feature">gyroscope-feature</a><span>, in § 5</span>
    <li><a href="#enumdef-gyroscopelocalcoordinatesystem">GyroscopeLocalCoordinateSystem</a><span>, in § 7.1</span>
    <li><a href="#dom-gyroscope-gyroscope">Gyroscope(sensorOptions)</a><span>, in § 7.1</span>
    <li><a href="#dictdef-gyroscopesensoroptions">GyroscopeSensorOptions</a><span>, in § 7.1</span>
@@ -1184,6 +1182,12 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
     <ul>
      <li><span class="dfn-paneled" id="7892f569">device coordinate system</span>
      <li><span class="dfn-paneled" id="9d689cca">screen coordinate system</span>
+    </ul>
+   <li>
+    <a data-link-type="biblio">[DEVICE-ORIENTATION]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="18030dd0">gyroscope</span>
+     <li><span class="dfn-paneled" id="4113b1d4">gyroscope-feature</span>
     </ul>
    <li>
     <a data-link-type="biblio">[GENERIC-SENSOR]</a> defines the following terms:
@@ -1233,7 +1237,6 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
    <li>
     <a data-link-type="biblio">[PERMISSIONS-POLICY-1]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="1570624a">default allowlist</span>
      <li><span class="dfn-paneled" id="cc890cc1">policy-controlled feature</span>
     </ul>
    <li>
@@ -1253,6 +1256,8 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
   <dl>
    <dt id="biblio-accelerometer">[ACCELEROMETER]
    <dd>Anssi Kostiainen. <a href="https://w3c.github.io/accelerometer/"><cite>Accelerometer</cite></a>. URL: <a href="https://w3c.github.io/accelerometer/">https://w3c.github.io/accelerometer/</a>
+   <dt id="biblio-device-orientation">[DEVICE-ORIENTATION]
+   <dd>Reilly Grant; Raphael Kubo da Costa. <a href="https://w3c.github.io/deviceorientation/"><cite>DeviceOrientation Event Specification</cite></a>. URL: <a href="https://w3c.github.io/deviceorientation/">https://w3c.github.io/deviceorientation/</a>
    <dt id="biblio-generic-sensor">[GENERIC-SENSOR]
    <dd>Rick Waldron. <a href="https://w3c.github.io/sensors/"><cite>Generic Sensor API</cite></a>. URL: <a href="https://w3c.github.io/sensors/">https://w3c.github.io/sensors/</a>
    <dt id="biblio-infra">[INFRA]
@@ -1697,6 +1702,8 @@ conforming IDL fragments, as described in the Web IDL specification. <a data-lin
 window.dfnpanelData = {};
 window.dfnpanelData['7892f569'] = {"dfnID": "7892f569", "url": "https://w3c.github.io/accelerometer/#device-coordinate-system", "dfnText": "device coordinate system", "refSections": [{"refs": [{"id": "ref-for-device-coordinate-system"}], "title": "6.1. Reference Frame"}, {"refs": [{"id": "ref-for-device-coordinate-system\u2460"}], "title": "8.1. Construct a Gyroscope object"}], "external": true};
 window.dfnpanelData['9d689cca'] = {"dfnID": "9d689cca", "url": "https://w3c.github.io/accelerometer/#screen-coordinate-system", "dfnText": "screen coordinate system", "refSections": [{"refs": [{"id": "ref-for-screen-coordinate-system"}], "title": "6.1. Reference Frame"}, {"refs": [{"id": "ref-for-screen-coordinate-system\u2460"}], "title": "8.1. Construct a Gyroscope object"}], "external": true};
+window.dfnpanelData['18030dd0'] = {"dfnID": "18030dd0", "url": "https://w3c.github.io/deviceorientation/#permissiondef-gyroscope", "dfnText": "gyroscope", "refSections": [{"refs": [{"id": "ref-for-permissiondef-gyroscope"}, {"id": "ref-for-permissiondef-gyroscope\u2460"}], "title": "6. Model"}], "external": true};
+window.dfnpanelData['4113b1d4'] = {"dfnID": "4113b1d4", "url": "https://w3c.github.io/deviceorientation/#gyroscope-feature", "dfnText": "gyroscope-feature", "refSections": [{"refs": [{"id": "ref-for-gyroscope-feature"}], "title": "5. Permissions Policy integration"}, {"refs": [{"id": "ref-for-gyroscope-feature\u2460"}], "title": "6. Model"}], "external": true};
 window.dfnpanelData['1b956603'] = {"dfnID": "1b956603", "url": "https://w3c.github.io/sensors/#sensor", "dfnText": "Sensor", "refSections": [{"refs": [{"id": "ref-for-sensor"}], "title": "6. Model"}, {"refs": [{"id": "ref-for-sensor\u2460"}], "title": "7.1. The Gyroscope Interface"}], "external": true};
 window.dfnpanelData['207de9db'] = {"dfnID": "207de9db", "url": "https://w3c.github.io/sensors/#dictdef-sensoroptions", "dfnText": "SensorOptions", "refSections": [{"refs": [{"id": "ref-for-dictdef-sensoroptions"}], "title": "7.1. The Gyroscope Interface"}], "external": true};
 window.dfnpanelData['5822d2f3'] = {"dfnID": "5822d2f3", "url": "https://w3c.github.io/sensors/#check-sensor-policy-controlled-features", "dfnText": "check sensor policy-controlled features", "refSections": [{"refs": [{"id": "ref-for-check-sensor-policy-controlled-features"}], "title": "8.1. Construct a Gyroscope object"}], "external": true};
@@ -1730,7 +1737,6 @@ window.dfnpanelData['3fca5a9e'] = {"dfnID": "3fca5a9e", "url": "https://infra.sp
 window.dfnpanelData['802b0fdd'] = {"dfnID": "802b0fdd", "url": "https://infra.spec.whatwg.org/#map-value", "dfnText": "value", "refSections": [{"refs": [{"id": "ref-for-map-value"}], "title": "9. Automation"}], "external": true};
 window.dfnpanelData['12d6b9a8'] = {"dfnID": "12d6b9a8", "url": "https://infra.spec.whatwg.org/#map-getting-the-values", "dfnText": "values", "refSections": [{"refs": [{"id": "ref-for-map-getting-the-values"}], "title": "6. Model"}], "external": true};
 window.dfnpanelData['409a61ca'] = {"dfnID": "409a61ca", "url": "https://w3c.github.io/permissions/#dfn-permission-revocation-algorithm", "dfnText": "permission revocation algorithm", "refSections": [{"refs": [{"id": "ref-for-dfn-permission-revocation-algorithm"}], "title": "6. Model"}], "external": true};
-window.dfnpanelData['1570624a'] = {"dfnID": "1570624a", "url": "https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature-default-allowlist", "dfnText": "default allowlist", "refSections": [{"refs": [{"id": "ref-for-policy-controlled-feature-default-allowlist"}], "title": "5. Permissions Policy integration"}], "external": true};
 window.dfnpanelData['cc890cc1'] = {"dfnID": "cc890cc1", "url": "https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature", "dfnText": "policy-controlled feature", "refSections": [{"refs": [{"id": "ref-for-policy-controlled-feature"}], "title": "5. Permissions Policy integration"}], "external": true};
 window.dfnpanelData['dca2de17'] = {"dfnID": "dca2de17", "url": "https://webidl.spec.whatwg.org/#idl-DOMException", "dfnText": "DOMException", "refSections": [{"refs": [{"id": "ref-for-idl-DOMException"}], "title": "8.1. Construct a Gyroscope object"}], "external": true};
 window.dfnpanelData['889e932f'] = {"dfnID": "889e932f", "url": "https://webidl.spec.whatwg.org/#Exposed", "dfnText": "Exposed", "refSections": [{"refs": [{"id": "ref-for-Exposed"}], "title": "7.1. The Gyroscope Interface"}], "external": true};
@@ -1739,9 +1745,7 @@ window.dfnpanelData['c3e881ef'] = {"dfnID": "c3e881ef", "url": "https://webidl.s
 window.dfnpanelData['8c800cdf'] = {"dfnID": "8c800cdf", "url": "https://webidl.spec.whatwg.org/#idl-double", "dfnText": "double", "refSections": [{"refs": [{"id": "ref-for-idl-double"}, {"id": "ref-for-idl-double\u2460"}, {"id": "ref-for-idl-double\u2461"}], "title": "7.1. The Gyroscope Interface"}], "external": true};
 window.dfnpanelData['4013a022'] = {"dfnID": "4013a022", "url": "https://webidl.spec.whatwg.org/#this", "dfnText": "this", "refSections": [{"refs": [{"id": "ref-for-this"}], "title": "7.1. The Gyroscope Interface"}], "external": true};
 window.dfnpanelData['b4cfa5ce'] = {"dfnID": "b4cfa5ce", "url": "https://webidl.spec.whatwg.org/#dfn-throw", "dfnText": "throw", "refSections": [{"refs": [{"id": "ref-for-dfn-throw"}], "title": "8.1. Construct a Gyroscope object"}], "external": true};
-window.dfnpanelData['gyroscope-feature'] = {"dfnID": "gyroscope-feature", "url": "#gyroscope-feature", "dfnText": "gyroscope", "refSections": [{"refs": [{"id": "ref-for-gyroscope-feature"}], "title": "6. Model"}], "external": false};
 window.dfnpanelData['gyroscope-sensor-type'] = {"dfnID": "gyroscope-sensor-type", "url": "#gyroscope-sensor-type", "dfnText": "Gyroscope", "refSections": [{"refs": [{"id": "ref-for-gyroscope-sensor-type"}], "title": "6. Model"}, {"refs": [{"id": "ref-for-gyroscope-sensor-type\u2460"}], "title": "9. Automation"}], "external": false};
-window.dfnpanelData['permissiondef-gyroscope'] = {"dfnID": "permissiondef-gyroscope", "url": "#permissiondef-gyroscope", "dfnText": "gyroscope", "refSections": [{"refs": [{"id": "ref-for-permissiondef-gyroscope"}], "title": "6. Model"}], "external": false};
 window.dfnpanelData['gyroscope-virtual-sensor-type'] = {"dfnID": "gyroscope-virtual-sensor-type", "url": "#gyroscope-virtual-sensor-type", "dfnText": "gyroscope", "refSections": [{"refs": [{"id": "ref-for-gyroscope-virtual-sensor-type"}], "title": "9. Automation"}], "external": false};
 window.dfnpanelData['angular-velocity'] = {"dfnID": "angular-velocity", "url": "#angular-velocity", "dfnText": "angular velocity", "refSections": [{"refs": [{"id": "ref-for-angular-velocity"}, {"id": "ref-for-angular-velocity\u2460"}], "title": "6. Model"}, {"refs": [{"id": "ref-for-angular-velocity\u2461"}], "title": "7.1.1. Gyroscope.x"}, {"refs": [{"id": "ref-for-angular-velocity\u2462"}], "title": "7.1.2. Gyroscope.y"}, {"refs": [{"id": "ref-for-angular-velocity\u2463"}], "title": "7.1.3. Gyroscope.z"}], "external": false};
 window.dfnpanelData['gyroscope'] = {"dfnID": "gyroscope", "url": "#gyroscope", "dfnText": "Gyroscope", "refSections": [{"refs": [{"id": "ref-for-gyroscope"}], "title": "6. Model"}, {"refs": [{"id": "ref-for-gyroscope\u2460"}], "title": "6.1. Reference Frame"}, {"refs": [{"id": "ref-for-gyroscope\u2461"}], "title": "7.1. The Gyroscope Interface"}, {"refs": [{"id": "ref-for-gyroscope\u2462"}], "title": "7.1.1. Gyroscope.x"}, {"refs": [{"id": "ref-for-gyroscope\u2463"}], "title": "7.1.2. Gyroscope.y"}, {"refs": [{"id": "ref-for-gyroscope\u2464"}], "title": "7.1.3. Gyroscope.z"}, {"refs": [{"id": "ref-for-gyroscope\u2465"}], "title": "8.1. Construct a Gyroscope object"}], "external": false};
