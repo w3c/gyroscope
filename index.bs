@@ -144,7 +144,7 @@ The <dfn id="gyroscope-sensor-type">Gyroscope</dfn> <a>sensor type</a> has the f
  : [=Default sensor=]
  :: The device's main gyroscope sensor.
  : [=Virtual sensor type=]
- :: "<code><dfn data-lt="gyroscope virtual sensor type">gyroscope</dfn></code>"
+ :: "<code><a data-lt="gyroscope virtual sensor type">gyroscope</a></code>"
 
 A [=latest reading=] of a {{Sensor}} of <a>Gyroscope</a> <a>sensor type</a> includes three [=map/entries=]
 whose [=map/keys=] are "x", "y", "z" and whose [=map/values=] contain current <a>angular
@@ -248,11 +248,7 @@ Automation {#automation}
 
 This section extends [[GENERIC-SENSOR#automation]] by providing [=Gyroscope=]-specific virtual sensor metadata.
 
-The [=per-type virtual sensor metadata=] [=map=] must have the following [=map/entry=]:
-: [=map/key=]
-:: "<code>[=gyroscope virtual sensor type|gyroscope=]</code>"
-: [=map/value=]
-:: A [=virtual sensor metadata=] whose [=virtual sensor metadata/reading parsing algorithm=] is [=parse xyz reading=].
+The [=gyroscope virtual sensor type=] and its corresponding entry in the [=per-type virtual sensor metadata=] [=map=] are defined in [[DEVICE-ORIENTATION#automation]].
 
 Acknowledgements {#acknowledgements}
 ================
