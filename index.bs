@@ -44,11 +44,6 @@ urlPrefix: https://w3c.github.io/accelerometer/; spec: ACCELEROMETER
     text: device coordinate system
     text: screen coordinate system
 </pre>
-<pre class=link-defaults>
-spec:orientation-event; type:dfn; text:gyroscope-feature
-spec:orientation-event; type:permission; text:gyroscope
-</pre>
-
 <pre class=biblio>
 {
     "KEYSTROKEDEFENSE": {
@@ -126,7 +121,7 @@ in the Generic Sensor API [[!GENERIC-SENSOR]].
 Permissions Policy integration {#permissions-policy-integration}
 ==============================
 
-This specification utilizes the [=policy-controlled feature=] identified by the string "<code><a data-lt="gyroscope-feature">gyroscope</a></code>" defined in [[DEVICE-ORIENTATION]].
+This specification utilizes the [=policy-controlled feature=] identified by the string "<code><a permission>gyroscope</a></code>" defined in [[DEVICE-ORIENTATION]].
 
 Model {#model}
 =====
@@ -136,9 +131,9 @@ The <dfn id="gyroscope-sensor-type">Gyroscope</dfn> <a>sensor type</a> has the f
  : [=Extension sensor interface=]
  :: {{Gyroscope}}
  : [=Sensor permission names=]
- :: "<code><a permission>gyroscope</a></code>" (defined in [[DEVICE-ORIENTATION]])
+ :: "<code><a permission>gyroscope</a></code>"
  : [=Sensor feature names=]
- :: "[=gyroscope-feature|gyroscope=]" (defined in [[DEVICE-ORIENTATION]])
+ :: <a permission>"gyroscope"</a>
  : [=powerful feature/Permission revocation algorithm=]
  :: Invoke the [=generic sensor permission revocation algorithm=] with "<code><a permission>gyroscope</a></code>".
  : [=Default sensor=]
